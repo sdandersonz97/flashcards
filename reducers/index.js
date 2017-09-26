@@ -16,7 +16,10 @@ export default function (state={}, action){
                 ...state,
                 [action.deckId]:{
                     ...state[action.deckId],
-                    ['questions']:[...state[action.deckId]['questions'], action.card]
+                    ['questions']:[
+                        ...state[action.deckId]['questions'], 
+                        action.card
+                    ]
                 }
                 
             }

@@ -4,7 +4,6 @@ import { connect } from 'react-redux'
 import AddButton from '../components/add_button'
 import { blue } from '../helpers/colors'
 class DeckShow extends Component {
-    
     render(){
         const { navigation } = this.props
         const { deckTitle, questions } = this.props.deck 
@@ -16,7 +15,7 @@ class DeckShow extends Component {
                 </View>
                 <View>
                     <AddButton onPress={()=>navigation.navigate('AddCard',{ deckTitle })} color={blue} text="ADD QUESTION"/>
-                    <AddButton color={blue} text="BEGIN QUIZ"/>
+                    <AddButton color={blue} onPress={()=>navigation.navigate('DeckQuestion',{ deckTitle })} text="BEGIN QUIZ" />
                 </View>
             </View>
         )

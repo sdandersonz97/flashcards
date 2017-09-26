@@ -8,7 +8,6 @@ import { AppLoading } from 'expo'
 import Deck from '../components/deck'
 import glamorous from 'glamorous-native'
 
-
 const NoAvailable = glamorous.text({
         justifyContent: 'center',
         alignSelf: 'center',

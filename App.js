@@ -3,6 +3,7 @@ import { StyleSheet, Text, View, Platform, StatusBar } from 'react-native'
 import DeckList from './containers/deck_list'
 import AddDeck from './components/add_deck'
 import DeckShow from './containers/deck_show'
+import DeckQuestion from './containers/deck_question'
 import AddCard from './components/add_card'
 import { createStore, applyMiddleware } from 'redux'
 import { Provider } from 'react-redux'
@@ -66,9 +67,18 @@ const MainNavigator = StackNavigator({
   },
   AddCard:{
     screen: AddCard,
-    navigationOptions:{
+    navigationOptions: {
       headerTintColor: white,
-      headerStyle:{
+      headerStyle: {
+        backgroundColor: purple
+      }
+    }
+  },
+  DeckQuestion:{
+    screen: DeckQuestion,
+    navigationOptions: {
+      headerTintColor: white,
+      headerStyle: {
         backgroundColor: purple
       }
     }
