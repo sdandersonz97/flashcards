@@ -1,19 +1,18 @@
 import React, { Component } from 'react'
 import { Text } from 'react-native'
 import glamorous from 'glamorous-native'
-import { blue } from '../helpers/colors'
+import { primary } from '../helpers/colors'
 import { addDeck as addDeckAction } from '../actions'
 import { addDeck } from '../helpers/api'
-import AddButton from './add_button'
+import Button from './add_button'
 import TextInput  from './text_input'
 import { connect } from 'react-redux'
 import { NavigationActions } from 'react-navigation'
+
 const Container = glamorous.view({
     flex: 1,
     alignItems: 'center',
     justifyContent: 'center',
-    paddingTop: 25,
-    backgroundColor: '#ecf0f1'
 })
 
 class AddDeck extends Component {
@@ -46,12 +45,13 @@ class AddDeck extends Component {
         const { deckTitle } = this.state
         return(
             <Container>
-                <Text style={{fontSize:20}}> Title: </Text>
+                <Text style={{fontSize:28, margin:30}}> Add a title for your deck! </Text>
                 <TextInput
                     value={deckTitle}
                     onChangeText={this.handleTextChange}
+                    style={{margin:50}}
                 />
-                <AddButton onPress={this.submit} text="ADD DECK" color={blue}/>
+                <Button onPress={this.submit} text="ADD DECK" style={{backgroundColor:primary}}/>
             </Container>
         )
     }

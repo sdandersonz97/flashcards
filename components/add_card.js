@@ -5,7 +5,7 @@ import { Text } from 'react-native'
 import { addCard as addCardAction } from '../actions'
 import { addCard } from '../helpers/api'
 import { connect } from 'react-redux'
-import { blue } from '../helpers/colors'
+import { primary } from '../helpers/colors'
 import glamorous from 'glamorous-native'
 const ContainerView = glamorous.view({
     flex: 1,
@@ -52,7 +52,7 @@ class AddCard extends Component {
                 <TextInput value={question} onChangeText={this.onQuestionChange} />
                 <Text style={{fontSize:15}}> Answer </Text>
                 <TextInput value={answer} onChangeText={this.onAnswerChange} />
-                <AddButton text="ADD CARD" onPress={this.onSubmit} color={blue}/>
+                <AddButton text="ADD CARD" onPress={this.onSubmit} Style={{backgroundColor:primary}}/>
             </ContainerView>
         )
     }

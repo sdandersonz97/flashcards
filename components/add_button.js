@@ -3,15 +3,15 @@ import { Text } from 'react-native'
 import glamorous from 'glamorous-native'
 
 const StyledButton = glamorous.touchableOpacity({
-    padding: 10,
     alignSelf: 'center',
+    justifyContent: 'center',
     borderRadius: 5,
-    margin: 20,
-    width: 150
+    width: 200,
+    height: 50,
 })
 
-const Button = ({ color, text, ...rest }) => (
-    <StyledButton style={{ backgroundColor: color }} {...rest}>
+const Button = ({ text, ...rest }) => (
+    <StyledButton  {...rest}>
         <Text style={{textAlign:'center'}}> {text} </Text>
     </StyledButton> 
 )

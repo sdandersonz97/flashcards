@@ -8,12 +8,10 @@ import { AppLoading } from 'expo'
 import Deck from '../components/deck'
 import glamorous from 'glamorous-native'
 
-const NoAvailable = glamorous.text({
+const Container = glamorous.view({
+        flex:1,
         justifyContent: 'center',
-        alignSelf: 'center',
-        marginLeft: 30,
-        marginRight: 30,
-        fontSize: 30
+        alignItems: 'center',
 })
 class DeckList extends Component {
     
@@ -39,17 +37,18 @@ class DeckList extends Component {
             return <AppLoading />
         }
         return(
-            <View>
+            <Container>
                 { decks.length > 0
                     ?  <FlatList
                             data={decks}
                             renderItem={this.renderDeck}
                         />
-                    :   <NoAvailable>
-                            No decks available
-                        </NoAvailable>
+                    :   <View>
+                            <Text style={{fontSize:30}}> No decks available </Text>
+                            <Text style={{fontSize:20}}> add some decks to get started! </Text>
+                        </View>
                 }
-            </View>
+            </Container>
         )
     }
 }
