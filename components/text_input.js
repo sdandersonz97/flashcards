@@ -5,7 +5,7 @@ import { gray, white } from '../helpers/colors'
 const TextInput = glamorous.textInput({
     width: 300, 
     height: 50, 
-    borderColor: gray,
+    borderColor: 'black',
     borderWidth: 1,
     backgroundColor: white,
     borderRadius: 8,

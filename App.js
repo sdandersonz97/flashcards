@@ -6,7 +6,7 @@ import { Provider } from 'react-redux'
 import reducer from './reducers'
 import { Constants } from 'expo'
 import { primary } from './helpers/colors'
-
+import { setLocalNotification } from './helpers/helpers'
 function CardsStatusBar({ backgroundColor, ...props}){
   return(
     <View style={{ backgroundColor, height: Constants.statusBarHeight }}>
@@ -16,6 +16,9 @@ function CardsStatusBar({ backgroundColor, ...props}){
 }
 
 export default class App extends React.Component {
+  componentDidMount(){
+    setLocalNotification()
+  }
   render() {
     return (
       <Provider store={createStore(reducer)}>
