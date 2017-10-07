@@ -2,8 +2,14 @@ import React, { Component } from 'react'
 import { View, Text } from 'react-native'
 import { connect } from 'react-redux'
 import { primary } from '../helpers/colors'
-import { Card, CardSection, Button } from '../components/common'
+import { Card, CardSection, Button, Confirm } from '../components/common'
 class DeckShow extends Component {
+    state={
+        showConfirm: false
+    }
+    onPressShowConfirm = () => { this.setState({showConfirm: true}) }
+    onAccept = () => {}
+    onDecline = () => { this.setState({showConfirm:false}) }
     render(){
         const { navigation } = this.props
         const { deckTitle, questions } = this.props.deck 
@@ -31,7 +37,19 @@ class DeckShow extends Component {
                             onPress={()=>navigation.navigate('DeckQuestion',{ deckTitle })} 
                             style={{ backgroundColor: primary,  margin: 10}} 
                             text="START QUIZ" 
-                        /> 
+                        />
+                        <Button 
+                            onPress={this.onPressShowConfirm.bind(this)} 
+                            style={{ backgroundColor: primary,  margin: 10}} 
+                            text="DELETE QUIZ" 
+                        />
+                        <Confirm
+                            visible={this.state.showConfirm}
+                            onAccept={this.onAccept.bind(this)}
+                            onDecline={this.onDecline.bind(this)}
+                        >
+                            Are you sure you want to delete this deck?
+                        </Confirm>
                     </CardSection>
                         
                 </Card>
