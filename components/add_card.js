@@ -3,7 +3,7 @@ import TextInput from './text_input'
 import Button from './button'
 import { Text, View } from 'react-native'
 import { addCard as addCardAction } from '../actions'
-import { addCard } from '../helpers/api'
+import { addCardToDeck, fetchDeck } from '../helpers/api'
 import { connect } from 'react-redux'
 import { primary } from '../helpers/colors'
 import { Card, CardSection } from './common'
@@ -34,12 +34,14 @@ class AddCard extends Component {
         const { question, answer } = this.state
         const { deckTitle } = this.props.navigation.state.params
         const { addCardAction } = this.props
-        const card = JSON.stringify(question,answer)
-        addCard(deckTitle, card)
-        addCardAction(deckTitle, {
-            question,
-            answer
+        fetchDeck(deckTitle).then(questions => {
+            addCardToDeck({deckTitle, questions, question, answer})
+            addCardAction(deckTitle, {
+                question,
+                answer
+            })
         })
+        
         this.setState(() => ({
             question: '',
             answer: '' 

@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { Text, View, FlatList } from 'react-native'
-import { fetchDecks } from '../helpers/api' 
+import { Text, View, FlatList, AsyncStorage } from 'react-native'
+import { fetchDecks, fetchDeck } from '../helpers/api' 
 import { blue, gray } from '../helpers/colors'
 import { recieveDecks } from '../actions'
 import { AppLoading } from 'expo'
@@ -14,16 +14,13 @@ class DeckList extends Component {
     componentDidMount(){
         const { recieveDecks } = this.props
         fetchDecks()
-            .then(decks => recieveDecks(decks))
-            .then(() => this.setState(() => ({
-                ready: true
-            })))
+            .then(res=>recieveDecks(res))
+        this.setState({ ready:true })
+
     }
     renderDeck = ({ item }) => {
         const{ deckTitle } = item
-        return <Deck 
-                    onClickNavigate={()=>this.props.navigation.navigate('DeckShow',{ deckTitle })} { ...item } 
-                />
+        return <Deck onClickNavigate={()=>this.props.navigation.navigate('DeckShow',{ deckTitle })} { ...item } />
     }
     render(){
         const { ready } = this.state
