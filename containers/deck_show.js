@@ -1,9 +1,8 @@
 import React, { Component } from 'react'
 import { View, Text } from 'react-native'
 import { connect } from 'react-redux'
-import Button from '../components/button'
 import { primary } from '../helpers/colors'
-import { Card, CardSection } from '../components/common'
+import { Card, CardSection, Button } from '../components/common'
 class DeckShow extends Component {
     render(){
         const { navigation } = this.props

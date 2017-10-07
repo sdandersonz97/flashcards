@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 import { View, Text } from 'react-native'
-import Button from '../components/button'
-import { Card, CardSection } from '../components/common'
+import { Card, CardSection, Button } from '../components/common'
 import { connect } from 'react-redux'
 import { correct, incorrect } from '../helpers/colors'
 class DeckQuestion extends Component {

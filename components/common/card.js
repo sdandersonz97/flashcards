@@ -1,16 +1,8 @@
 import React from 'react'
-import { View, StyleSheet } from 'react-native'
+import glamorous from 'glamorous-native'
 
-export const Card = (props) => {
-    return(
-        <View style={[styles.containerStyle, props.style]}>
-            {props.children}
-        </View>
-    )
-}
 
-const styles = StyleSheet.create({
-    containerStyle: {
+const View = glamorous.view({
         backgroundColor: "#fff",
         borderWidth: 1,
         minHeight: 100,
@@ -28,5 +20,13 @@ const styles = StyleSheet.create({
         marginBottom: 10,
         justifyContent: 'center',
         alignItems: 'center'
-    },
 })
+
+export const Card = (props) => {
+    return(
+        <View style={props.style}>
+            {props.children}
+        </View>
+    )
+}
+

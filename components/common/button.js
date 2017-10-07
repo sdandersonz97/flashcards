@@ -10,10 +10,8 @@ const StyledButton = glamorous.touchableOpacity({
     height: 50,
 })
 
-const Button = ({ text, ...rest }) => (
+export const Button = ({ text, ...rest }) => (
     <StyledButton  {...rest}>
         <Text style={{textAlign:'center'}}> {text} </Text>
     </StyledButton> 
 )
-
-export default Button

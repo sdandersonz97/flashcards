@@ -1,8 +1,6 @@
 import { ADD_DECK, RECIEVE_DECKS, ADD_CARD } from '../actions/types'
 export default function (state={}, action){
-    console.log(action.type + 'reducer ')
     switch(action.type){
-        
         case ADD_DECK:
             return {
                 ...state,

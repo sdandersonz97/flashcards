@@ -1,13 +1,12 @@
 import React, { Component } from 'react'
-import TextInput from './text_input'
-import Button from './button'
 import { Text, View } from 'react-native'
 import { addCard as addCardAction } from '../actions'
 import { addCardToDeck, fetchDeck } from '../helpers/api'
 import { connect } from 'react-redux'
 import { primary } from '../helpers/colors'
-import { Card, CardSection } from './common'
+import { Card, CardSection, Button, TextInput } from './common'
 import glamorous from 'glamorous-native'
+
 const ContainerView = glamorous.view({
     flex: 1,
     alignItems: 'center',
