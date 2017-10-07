@@ -1,5 +1,6 @@
 export const blue = '#0077A3'
 export const gray = '#C1DFF0'
-export const primary ='#2E5EAA'
-export const purple = '#292477'
+export const primary ='#007aff'
+export const correct = '#2D842B'
+export const incorrect = '#A31621'
 export const white = '#fff'

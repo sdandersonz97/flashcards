@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import TextInput from './text_input'
-import AddButton from './add_button'
+import Button from './add_button'
 import { Text } from 'react-native'
 import { addCard as addCardAction } from '../actions'
 import { addCard } from '../helpers/api'
@@ -48,11 +48,11 @@ class AddCard extends Component {
         const { question, answer } = this.state
         return(
             <ContainerView>
-                <Text style={{fontSize:15}}> Question </Text>
+                <Text style={{fontSize:25, margin:20}}> Question </Text>
                 <TextInput value={question} onChangeText={this.onQuestionChange} />
-                <Text style={{fontSize:15}}> Answer </Text>
+                <Text style={{fontSize:25, margin:20}}> Answer </Text>
                 <TextInput value={answer} onChangeText={this.onAnswerChange} />
-                <AddButton text="ADD CARD" onPress={this.onSubmit} Style={{backgroundColor:primary}}/>
+                <Button text="ADD CARD" onPress={this.onSubmit} style={{backgroundColor:primary, margin:30}}/>
             </ContainerView>
         )
     }

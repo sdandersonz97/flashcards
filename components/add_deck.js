@@ -45,11 +45,11 @@ class AddDeck extends Component {
         const { deckTitle } = this.state
         return(
             <Container>
-                <Text style={{fontSize:28, margin:30}}> Add a title for your deck! </Text>
+                <Text style={{fontSize:28 }}> Add a title for your deck! </Text>
                 <TextInput
                     value={deckTitle}
                     onChangeText={this.handleTextChange}
-                    style={{margin:50}}
+                    style={{margin:40}}
                 />
                 <Button onPress={this.submit} text="ADD DECK" style={{backgroundColor:primary}}/>
             </Container>

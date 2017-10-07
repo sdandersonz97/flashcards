@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { View, Text, TouchableOpacity, ScrollView, FlatList } from 'react-native'
+import { View, Text, TouchableOpacity } from 'react-native'
 import glamorous from 'glamorous-native'
 
 const DeckView = glamorous.view({

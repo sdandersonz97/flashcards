@@ -27,7 +27,7 @@ class DeckList extends Component {
             })))
     }
     renderDeck = ({ item }) => {
-        const{deckTitle}=item
+        const{ deckTitle } = item
         return <Deck onClickNavigate={()=>this.props.navigation.navigate('DeckShow',{ deckTitle })} { ...item } />
     }
     render(){

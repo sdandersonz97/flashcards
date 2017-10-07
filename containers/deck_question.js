@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { View, Text } from 'react-native'
 import Button from '../components/add_button'
 import { connect } from 'react-redux'
-import { blue, purple } from '../helpers/colors'
+import { correct, incorrect } from '../helpers/colors'
 class DeckQuestion extends Component {
     state = {
         view:'question',
@@ -35,17 +35,17 @@ class DeckQuestion extends Component {
                 {index+1 <= deck.questions.length 
                     ? view === 'question' 
                         ?   <View>
-                                <Text>{`${index+1}/${deck.questions.length}`}</Text>
-                                <Text>{deck.questions[index].question}</Text>
-                                <Button onPress={this.onPressIncrementCorrects} color={blue} text="Correct"/>
-                                <Button onPress={this.onPressIncrementIncorrects} color={purple} text="Incorrect"/>
+                                <Text style={{fontSize:15, alignSelf:'flex-start'}}>{`${index+1}/${deck.questions.length}`}</Text>
+                                <Text style={{fontSize:25}}>{deck.questions[index].question}</Text>
+                                <Button onPress={this.onPressIncrementCorrects} color={{backgroundColor: correct}} text="Correct"/>
+                                <Button onPress={this.onPressIncrementIncorrects} color={{backgroundColor: correct}} text="Incorrect"/>
                                 <Button onPress={this.onPressChangeView} text="View Answer"/>
                             </View>
                         :   <View>
-                                <Text>{`${index+1}/${deck.questions.length}`}</Text>
-                                <Text>{deck.questions[index].answer}</Text>
-                                <Button onPress={this.onPressIncrementCorrects} color={blue} text="Correct"/>
-                                <Button onPress={this.onPressIncrementIncorrects} color={purple} text="Incorrect"/>
+                                <Text style={{fontSize:15, alignSelf:'flex-start'}}>{`${index+1}/${deck.questions.length}`}</Text>
+                                <Text style={{fontSize:25}}>{deck.questions[index].answer}</Text>
+                                <Button onPress={this.onPressIncrementCorrects} style={{backgroundColor: correct}} text="Correct"/>
+                                <Button onPress={this.onPressIncrementIncorrects} style={{backgroundColor: correct}} text="Incorrect"/>
                                 <Button onPress={this.onPressChangeView} text="View Question"/>
                             </View>
                     :   <View>
