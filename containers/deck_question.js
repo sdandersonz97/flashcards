@@ -1,9 +1,11 @@
 import React, { Component } from 'react'
-import { View, Text, Animated } from 'react-native'
+import { View, Text, Animated, Dimensions } from 'react-native'
+import { DeckSwiper } from 'native-base'
 import { Card, CardSection, Button } from '../components/common'
 import { connect } from 'react-redux'
-import { correct, incorrect, white } from '../helpers/colors'
+import { correct, incorrect, white, primary } from '../helpers/colors'
 import CardAnimatedSlide from '../components/card_animated_slide'
+const dim = Dimensions.get("window")
 class DeckQuestion extends Component {
     static navigationOptions = ({ navigation }) => {
         const { deckTitle } = navigation.state.params
@@ -21,14 +23,14 @@ class DeckQuestion extends Component {
         incorrects: 0,
     }
    
-    onPressIncrementCorrects = () => {
+    onSwipeRight = () => {
         const { opacity, width, height } = this.state
         this.setState(state => ({
             index: state.index + 1,
             corrects: state.corrects + 1,
         })) 
     }
-    onPressIncrementIncorrects = () => {
+    onSwipeLeft = () => {
         this.setState(state => ({
             index: state.index + 1,
             incorrects: state.incorrects + 1
@@ -43,52 +45,70 @@ class DeckQuestion extends Component {
         const { deck, navigation } = this.props
         const { index, view, corrects, incorrects } = this.state
         return(
-            <View style={{flex:1}}>
-                <CardAnimatedSlide  index={index}> 
-                    {index+1 <= deck.questions.length  
-                        ?   <View>
+            <View>
+                <DeckSwiper
+                    onSwipeLeft={this.onSwipeLeft.bind(this)}
+                    onSwipeRight={this.onSwipeRight.bind(this)}
+                    dataSource={deck.questions}
+                    renderItem={deck.questions.length > index ? question => (
+                        <Card style={{ flex:1, height: dim.height-100 }}>
+                            <View style={{ margin: 10 }}>
                                 <Text 
-                                    style={{fontSize:25, alignSelf:'center'}}
+                                    style={{ fontSize:25, alignSelf:'center' }}
                                 >
-                                    { view === 'question' ? deck.questions[index].question : deck.questions[index].answer }
-                                </Text>
-                                <Button 
-                                    onPress={this.onPressIncrementCorrects} 
-                                    style={{backgroundColor: correct, margin: 10}} 
-                                    text="Correct"
-                                />
-                                <Button 
-                                    onPress={this.onPressIncrementIncorrects} 
-                                    style={{backgroundColor: incorrect, margin: 10}} 
-                                    text="Incorrect"
-                                />
-                                {view === 'question' 
-                                ?   <Button 
-                                        onPress={this.onPressChangeView} 
-                                        text="View Answer"
-                                    />
-                                :   <Button 
-                                        onPress={this.onPressChangeView} 
-                                        text="View Question"
-                                    />
-                                } 
-                                <Text 
-                                    style={{fontSize:15, alignSelf:'center'}}
-                                >
-                                    {`${index+1}/${deck.questions.length}`}
+                                    { view === 'question' ? question.question : question.answer }
                                 </Text>
                             </View>
-                        :   <View>
-                                <Text style={{fontSize:18, alignSelf:'center'}}> You Finished the quiz {deck.deckTitle} </Text>
-                                <Text style={{fontSize:12, alignSelf:'center'}}> Number of correct answer {corrects} of {deck.questions.length} in the {deck.deckTitle} quiz </Text>
-                                <Button 
-                                    text="Back to home"
-                                    onPress={()=>this.props.navigation.goBack()}    
+                            
+                            {view === 'question' 
+                            ?   <Button 
+                                    onPress={this.onPressChangeView.bind(this)} 
+                                    text="View Answer"
                                 />
-                            </View>
+                            :   <Button 
+                                    onPress={this.onPressChangeView.bind(this)} 
+                                    text="View Question"
+                                />
+                            } 
+                            <Text 
+                                style={{fontSize:15, alignSelf:'center'}}
+                            >
+                                {`${index+1}/${deck.questions.length}`}
+                            </Text>                           
+                        </Card>)
+                        : () => (
+                            <Card style={{flex:1, height: dim.height-100}}>
+                                <Text style={{fontSize:18, alignSelf:'center', margin: 10}}> You have finished the {deck.deckTitle} Quiz </Text>
+                                <Text style={{fontSize:12, alignSelf:'center', margin: 10}}> You have answer {corrects} questions correctly of {deck.questions.length}  Quiz </Text>
+                                <Button 
+                                    text="Go to deck"
+                                    style={{backgroundColor: primary, margin: 10}}
+                                    onPress={()=>this.props.navigation.goBack()}
+                                    
+                                />
+                                <Button 
+                                    text="Start again"
+                                    style={{backgroundColor: primary, margin: 10}}
+                                    onPress={()=>this.setState({index:0, corrects:0, incorrects: 0})}
+                                    
+                                />
+                            </Card>)
                     }
-                    </CardAnimatedSlide>
-                    </View>
+                renderEmpty={() => (
+                        <Card style={{height: dim.height-100}}>
+                            <View style={{margin:20, justifyContent:'center', alignItems:'center'}}>
+                                <Text style={{fontSize:18}}>You don't have cards in this deck, please add some cards first. </Text>
+                                <Button 
+                                    text="Add Card"
+                                    style={{backgroundColor: primary, margin: 10}}
+                                    onPress={()=>this.props.navigation.navigate('AddCard', {deckTitle:deck.deckTitle})}    
+                                />
+                            </View>
+                        </Card>)}  
+                />
+                
+                
+            </View>
         )
     }
 }

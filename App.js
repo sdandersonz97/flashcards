@@ -1,5 +1,5 @@
 import React from 'react'
-import { StatusBar, View } from 'react-native'
+import { StatusBar, View, AsyncStorage } from 'react-native'
 import MainNavigator from './components/main_navigator'
 import { createStore, applyMiddleware } from 'redux'
 import { Provider } from 'react-redux'
@@ -20,6 +20,7 @@ export default class App extends React.Component {
     setLocalNotification()
   }
   render() {
+    console.log(AsyncStorage.getItem('flashcard:key'))
     return (
       <Provider store={createStore(reducer)}>
         <View style={{ flex:1 }}>
