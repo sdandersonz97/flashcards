@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { Component } from 'react'
 import glamorous from 'glamorous-native'
 
 
@@ -6,6 +6,7 @@ const View = glamorous.view({
         backgroundColor: "#fff",
         borderWidth: 1,
         minHeight: 100,
+        maxWidth: '100%',
         borderRadius: 2,
         borderColor: '#ddd',
         borderBottomWidth: 0,
@@ -22,11 +23,14 @@ const View = glamorous.view({
         alignItems: 'center'
 })
 
-export const Card = (props) => {
-    return(
-        <View style={props.style}>
-            {props.children}
-        </View>
-    )
+export class Card extends Component {
+    render(){
+        return(
+            <View style={this.props.style}>
+                {this.props.children}
+            </View>
+        )
+    }
+    
 }
 

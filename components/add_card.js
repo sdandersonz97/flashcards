@@ -42,7 +42,7 @@ class AddCard extends Component {
         const { question, answer } = this.state
         const { deckTitle } = this.props.navigation.state.params
         const { addCardAction } = this.props
-        fetchDeck(deckTitle).then(questions => {
+        fetchDeck(deckTitle).then(({questions}) => {
             addCardToDeck({deckTitle, questions, question, answer})
             addCardAction(deckTitle, {
                 question,
