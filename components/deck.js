@@ -10,12 +10,12 @@ const DeckView = glamorous.view({
 const Deck = (props) => {
     const { deckTitle, questions, onClickNavigate } = props
     return(
-        <Card>
-            <TouchableOpacity onPress={()=>onClickNavigate()} >
+        <TouchableOpacity onPress={()=>onClickNavigate()} >
+            <Card>
                 <Text style={{fontSize:30,textAlign:'center'}}> { deckTitle }  </Text> 
                 <Text style={{fontSize:15, textAlign:'center'}}> { questions.length } Cards </Text> 
-            </TouchableOpacity> 
-        </Card>
+            </Card>
+        </TouchableOpacity>
     )
 }
 export default Deck
