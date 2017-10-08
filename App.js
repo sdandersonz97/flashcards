@@ -20,7 +20,6 @@ export default class App extends React.Component {
     setLocalNotification()
   }
   render() {
-    console.log(AsyncStorage.getItem('flashcard:key'))
     return (
       <Provider store={createStore(reducer)}>
         <View style={{ flex:1 }}>
