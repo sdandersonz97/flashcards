@@ -74,7 +74,15 @@ class DeckQuestion extends Component {
                                 style={{fontSize:15, alignSelf:'center'}}
                             >
                                 {`${index+1}/${deck.questions.length}`}
-                            </Text>                           
+                            </Text> 
+                            <View style={{ flexDirection: "row", flex: 1, position: "absolute", bottom: 50, left: 0, right: 0, justifyContent: 'space-between', padding: 15  }} >
+                                <Text style={{fontSize:10}}>
+                                    Swipe Left for incorrect
+                                </Text>
+                                <Text style={{fontSize:10}}>
+                                    Swipe Right for correct
+                                </Text>
+                            </View>                        
                         </Card>)
                         : () => (
                             <Card style={{flex:1, height: dim.height-100}}>
@@ -106,8 +114,6 @@ class DeckQuestion extends Component {
                             </View>
                         </Card>)}  
                 />
-                
-                
             </View>
         )
     }
