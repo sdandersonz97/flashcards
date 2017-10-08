@@ -1,8 +1,9 @@
+import _ from 'lodash'
 import { AsyncStorage } from 'react-native'
 
 const DECKS = 'DECKS'
 
-export function addDeck(deckTitle){
+export function addDeck (deckTitle) {
     return AsyncStorage.mergeItem(DECKS,JSON.stringify({
         [deckTitle]:{
             deckTitle,
@@ -12,21 +13,27 @@ export function addDeck(deckTitle){
     }))
 }
 
-export function addCard(deckTitle,card){
-    AsyncStorage.getItem(DECKS).then(data => {
-       const decks = JSON.stringify(data)
-       console.log(decks[deckTitle] + 'test')
-    })
-}
-export async function fetchDecks(){
+export async function fetchDecks () {
     try{
         const decks = await AsyncStorage.getItem(DECKS)
-        if( decks !== null){
-           return JSON.parse(decks)
+        if(decks !== null){
+            return JSON.parse(decks)
         }
+        return {}
     } catch(error){
         console.log(error)
     }  
+}
+export function removeDeck (deckTitle) {
+    try {
+        fetchDecks().then(decks => {
+            const newDecks = _.omit(decks, deckTitle)
+            AsyncStorage.removeItem(DECKS)
+            AsyncStorage.mergeItem(DECKS, JSON.stringify(newDecks))
+        })
+    } catch (error) {
+        console.log(error)
+    }
 }
 export async function fetchDeck(deckTitle){
     try{
@@ -38,7 +45,7 @@ export async function fetchDeck(deckTitle){
         console.log(error)
     }  
 }
-export function addCardToDeck({ deckTitle, questions, question, answer }){
+export function addCardToDeck ({ deckTitle, questions, question, answer }) {
     try{
         return AsyncStorage.mergeItem(DECKS,JSON.stringify({
                 [deckTitle]:{

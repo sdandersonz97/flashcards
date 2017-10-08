@@ -14,13 +14,14 @@ class DeckList extends Component {
     componentDidMount(){
         const { recieveDecks } = this.props
         fetchDecks()
-            .then(res=>recieveDecks(res))
+            .then(res => recieveDecks(res))
         this.setState({ ready:true })
+        //AsyncStorage.removeItem('DECKS')
 
     }
     renderDeck = ({ item }) => {
         const{ deckTitle } = item
-        return <Deck onClickNavigate={()=>this.props.navigation.navigate('DeckShow',{ deckTitle })} { ...item } />
+        return <Deck onClickNavigate={() => this.props.navigation.navigate('DeckShow',{ deckTitle })} { ...item } />
     }
     render(){
         const { ready } = this.state

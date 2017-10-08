@@ -2,13 +2,14 @@ import React, { Component } from 'react'
 import { View, Text } from 'react-native'
 import { connect } from 'react-redux'
 import { primary } from '../helpers/colors'
+import { removeDeck } from '../helpers/api'
 import { Card, CardSection, Button, Confirm } from '../components/common'
 class DeckShow extends Component {
     state={
         showConfirm: false
     }
     onPressShowConfirm = () => { this.setState({showConfirm: true}) }
-    onAccept = () => {}
+    onAccept = () => { removeDeck(this.props.navigation.state.params.deckTitle) }
     onDecline = () => { this.setState({showConfirm:false}) }
     render(){
         const { navigation } = this.props
