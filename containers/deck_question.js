@@ -2,8 +2,17 @@ import React, { Component } from 'react'
 import { View, Text } from 'react-native'
 import { Card, CardSection, Button } from '../components/common'
 import { connect } from 'react-redux'
-import { correct, incorrect } from '../helpers/colors'
+import { correct, incorrect, white } from '../helpers/colors'
 class DeckQuestion extends Component {
+    static navigationOptions = ({ navigation }) => {
+        const { deckTitle } = navigation.state.params
+        return {
+            title: `${deckTitle} Quiz`,
+            headerTitleStyle:{
+                color: white
+            }
+        }
+    }
     state = {
         view:'question',
         index: 0,

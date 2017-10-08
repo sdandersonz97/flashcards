@@ -3,7 +3,7 @@ import { Text, View } from 'react-native'
 import { addCard as addCardAction } from '../actions'
 import { addCardToDeck, fetchDeck } from '../helpers/api'
 import { connect } from 'react-redux'
-import { primary } from '../helpers/colors'
+import { primary, white } from '../helpers/colors'
 import { Card, CardSection, Button, TextInput } from './common'
 import glamorous from 'glamorous-native'
 
@@ -15,6 +15,15 @@ const ContainerView = glamorous.view({
     backgroundColor: '#ecf0f1'
 })
 class AddCard extends Component {
+    static navigationOptions = ({ navigation }) => {
+        const { deckTitle } = navigation.state.params
+        return {
+            title: `Add card to ${deckTitle} deck`,
+            headerTitleStyle:{
+                color: white
+            }
+        }
+    }
     state = {
         question: "",
         answer: "",

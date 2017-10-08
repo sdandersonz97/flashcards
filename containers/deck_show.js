@@ -2,10 +2,19 @@ import React, { Component } from 'react'
 import { View, Text } from 'react-native'
 import { deleteDeck } from '../actions'
 import { connect } from 'react-redux'
-import { primary } from '../helpers/colors'
+import { primary, white } from '../helpers/colors'
 import { removeDeck } from '../helpers/api'
 import { Card, CardSection, Button, Confirm } from '../components/common'
 class DeckShow extends Component {
+    static navigationOptions = ({ navigation }) => {
+        const { deckTitle } = navigation.state.params
+        return {
+            title: `${deckTitle} deck`,
+            headerTitleStyle:{
+                color: white
+              }
+        }
+    }
     state={
         showConfirm: false
     }
@@ -19,7 +28,7 @@ class DeckShow extends Component {
     shouldComponentUpdate(nextProps){
         return nextProps.deck ? true : false
     }
-    onDecline = () => { this.setState({showConfirm:false}) }
+    onDecline = () => { this.setState({ showConfirm:false }) }
     render(){
         const { navigation } = this.props
         const { deckTitle, questions } = this.props.deck 
