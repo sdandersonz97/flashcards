@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { View, Text } from 'react-native'
+import { deleteDeck } from '../actions'
 import { connect } from 'react-redux'
 import { primary } from '../helpers/colors'
 import { removeDeck } from '../helpers/api'
@@ -9,7 +10,15 @@ class DeckShow extends Component {
         showConfirm: false
     }
     onPressShowConfirm = () => { this.setState({showConfirm: true}) }
-    onAccept = () => { removeDeck(this.props.navigation.state.params.deckTitle) }
+    onAccept = () => {
+        const { navigation, deleteDeck } = this.props
+        deleteDeck(navigation.state.params.deckTitle, () => navigation.goBack())
+        removeDeck(navigation.state.params.deckTitle) 
+        
+    }
+    shouldComponentUpdate(nextProps){
+        return nextProps.deck ? true : false
+    }
     onDecline = () => { this.setState({showConfirm:false}) }
     render(){
         const { navigation } = this.props
@@ -64,4 +73,4 @@ function mapStateToProps(state,{ navigation }){
         deck: state[deckTitle]
     }
 }
-export default connect(mapStateToProps)(DeckShow)
+export default connect(mapStateToProps,{ deleteDeck })(DeckShow)

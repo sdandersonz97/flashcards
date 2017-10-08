@@ -1,4 +1,4 @@
-import { ADD_DECK, RECIEVE_DECKS, ADD_CARD } from './types'
+import { ADD_DECK, RECIEVE_DECKS, ADD_CARD, DELETE_DECK } from './types'
 
 export function addDeck(deck){
     return {
@@ -19,5 +19,13 @@ export function addCard(deckId, card){
         type: ADD_CARD,
         card,
         deckId
+    }
+}
+
+export function deleteDeck(deckTitle, cb){
+    cb()
+    return{
+        type: DELETE_DECK,
+        deckTitle
     }
 }
