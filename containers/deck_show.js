@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { View, Text } from 'react-native'
 import { deleteDeck } from '../actions'
 import { connect } from 'react-redux'
-import { primary, white } from '../helpers/colors'
+import { primary, white, red, green } from '../helpers/colors'
 import { removeDeck } from '../helpers/api'
 import { Card, CardSection, Button, Confirm } from '../components/common'
 class DeckShow extends Component {
@@ -12,7 +12,7 @@ class DeckShow extends Component {
             title: `${deckTitle} deck`,
             headerTitleStyle:{
                 color: white
-              }
+            }
         }
     }
     state={
@@ -50,16 +50,16 @@ class DeckShow extends Component {
                         <Button 
                             onPress={()=>navigation.navigate('AddCard',{ deckTitle })} 
                             style={{ backgroundColor: primary, margin: 10}} 
-                            text="ADD QUESTION"
+                            text="ADD CARD"
                         /> 
                         <Button 
                             onPress={()=>navigation.navigate('DeckQuestion',{ deckTitle })} 
-                            style={{ backgroundColor: primary,  margin: 10}} 
+                            style={{ backgroundColor: green,  margin: 10}} 
                             text="START QUIZ" 
                         />
                         <Button 
                             onPress={this.onPressShowConfirm.bind(this)} 
-                            style={{ backgroundColor: primary,  margin: 10}} 
+                            style={{ backgroundColor: red,  margin: 10}} 
                             text="DELETE QUIZ" 
                         />
                         <Confirm
@@ -72,7 +72,6 @@ class DeckShow extends Component {
                     </CardSection>
                         
                 </Card>
-            
         )
     }
 }

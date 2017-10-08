@@ -1,6 +1,6 @@
 export const blue = '#0077A3'
 export const gray = '#C1DFF0'
 export const primary ='#007aff'
-export const correct = '#4E9E21'
-export const incorrect = '#C12926'
+export const green = '#5cb85c'
+export const red = '#d9534f'
 export const white = '#fff'

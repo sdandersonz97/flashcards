@@ -2,7 +2,7 @@ import React from 'react'
 import { Text, View, Modal, StyleSheet } from 'react-native'
 import { CardSection } from './card_section'
 import { Button } from './button'
-import { primary } from '../../helpers/colors'
+import { primary, red } from '../../helpers/colors'
 export const Confirm = ({ children, onAccept, onDecline, visible }) => {
     const { containerStyle, textStyle, cardSectionStyle } = styles 
     return (
@@ -18,7 +18,7 @@ export const Confirm = ({ children, onAccept, onDecline, visible }) => {
                 </CardSection>
                 <CardSection>
                     <Button onPress={onAccept} style={{backgroundColor:primary, margin:10}} text="Yes"/>
-                    <Button onPress={onDecline} style={{backgroundColor:primary, margin:10}} text="No"/>
+                    <Button onPress={onDecline} style={{backgroundColor:red, margin:10}} text="No"/>
                 </CardSection>    
             </View>    
         </Modal>

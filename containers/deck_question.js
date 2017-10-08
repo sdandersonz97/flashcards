@@ -1,10 +1,9 @@
 import React, { Component } from 'react'
-import { View, Text, Animated, Dimensions } from 'react-native'
+import { View, Text, Dimensions } from 'react-native'
 import { DeckSwiper } from 'native-base'
-import { Card, CardSection, Button } from '../components/common'
+import { Card, Button } from '../components/common'
 import { connect } from 'react-redux'
-import { correct, incorrect, white, primary } from '../helpers/colors'
-import CardAnimatedSlide from '../components/card_animated_slide'
+import { white, primary } from '../helpers/colors'
 const dim = Dimensions.get("window")
 class DeckQuestion extends Component {
     static navigationOptions = ({ navigation }) => {
