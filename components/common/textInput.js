@@ -1,13 +1,22 @@
 import React from 'react'
 import glamorous from 'glamorous-native'
-import { gray, white } from '../../helpers/colors' 
+import { gray, white, primary } from '../../helpers/colors' 
+import { Platform } from 'react-native'
 
-export const TextInput = glamorous.textInput({
+const Style = Platform.OS === 'ios' ? {
     width: 300, 
     height: 50, 
     borderColor: 'black',
     borderWidth: 1,
     backgroundColor: white,
     borderRadius: 8,
+}
+: {
+    width: 300, 
+    height: 50, 
+    backgroundColor: white,
+}
+export const TextInput = glamorous.textInput({
+    ...Style
 })
 

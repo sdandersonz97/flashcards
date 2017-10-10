@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Text, View } from 'react-native'
+import { Text, View, KeyboardAvoidingView } from 'react-native'
 import { addCard as addCardAction } from '../actions'
 import { addCardToDeck, fetchDeck } from '../helpers/api'
 import { connect } from 'react-redux'
@@ -64,26 +64,25 @@ class AddCard extends Component {
         const { question, answer } = this.state
         return(
             <Card style={{flex:1}}>
-                <View style={{justifyContent:'center', alignItems:'center'}}>
-                    <Text style={{fontSize:25, margin:20}}> Question </Text>
-                    <TextInput 
-                        value={question} 
-                        onChangeText={this.onQuestionChange} 
-                        placeholder="What's your name"
-                    />    
-                    <Text style={{fontSize:25, margin:20}}> Answer </Text>
-                    <TextInput 
-                        value={answer} 
-                        onChangeText={this.onAnswerChange}
-                        placeholder="Steven"
-                    />       
-                    <Button 
-                        text="ADD CARD" 
-                        onPress={this.onSubmit} 
-                        style={{backgroundColor:primary, margin:30}}  
-                    /> 
-                </View>
+                <Text style={{fontSize:25, margin:20}}> Question </Text>
+                <TextInput 
+                    value={question} 
+                    onChangeText={this.onQuestionChange} 
+                    placeholder="What's your name"
+                />    
+                <Text style={{fontSize:25, margin:20}}> Answer </Text>
+                <TextInput 
+                    value={answer} 
+                    onChangeText={this.onAnswerChange}
+                    placeholder="Steven"
+                />       
+                <Button 
+                    text="ADD CARD" 
+                    onPress={this.onSubmit} 
+                    style={{backgroundColor:primary, margin:30}}  
+                /> 
             </Card>
+            
         )
     }
 }
