@@ -41,19 +41,24 @@ class AddCard extends Component {
     onSubmit = () => {
         const { question, answer } = this.state
         const { deckTitle } = this.props.navigation.state.params
-        const { addCardAction } = this.props
-        fetchDeck(deckTitle).then(({questions}) => {
-            addCardToDeck({deckTitle, questions, question, answer})
-            addCardAction(deckTitle, {
-                question,
-                answer
+        const { addCardAction, navigation } = this.props
+
+        if(question){
+            fetchDeck(deckTitle).then(({questions}) => {
+                addCardToDeck({deckTitle, questions, question, answer})
+                addCardAction(deckTitle, {
+                    question,
+                    answer
+                })
             })
-        })
-        
-        this.setState(() => ({
-            question: '',
-            answer: '' 
-        }))
+            this.setState(() => ({
+                question: '',
+                answer: '' 
+            }))
+            navigation.goBack()
+        } else {
+            alert('The question field can not be empty.')
+        }
     }
     render(){
         const { question, answer } = this.state

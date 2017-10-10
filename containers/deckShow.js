@@ -48,12 +48,12 @@ class DeckShow extends Component {
                     </CardSection>
                     <CardSection>
                         <Button 
-                            onPress={()=>navigation.navigate('AddCard',{ deckTitle })} 
+                            onPress={() => navigation.navigate('AddCard',{ deckTitle })} 
                             style={{ backgroundColor: primary, margin: 10}} 
                             text="ADD CARD"
                         /> 
                         <Button 
-                            onPress={()=>navigation.navigate('DeckQuestion',{ deckTitle })} 
+                            onPress={() => navigation.navigate('DeckQuiz',{ deckTitle })} 
                             style={{ backgroundColor: green,  margin: 10}} 
                             text="START QUIZ" 
                         />
@@ -64,13 +64,12 @@ class DeckShow extends Component {
                         />
                         <Confirm
                             visible={this.state.showConfirm}
-                            onAccept={this.onAccept.bind(this)}
-                            onDecline={this.onDecline.bind(this)}
+                            onAccept={this.onAccept}
+                            onDecline={this.onDecline}
                         >
                             Are you sure you want to delete this deck?
                         </Confirm>
                     </CardSection>
-                        
                 </Card>
         )
     }

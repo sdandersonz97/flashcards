@@ -3,11 +3,11 @@ import { Platform } from 'react-native'
 import { TabNavigator, StackNavigator } from 'react-navigation'
 import { Ionicons, FontAwesome } from '@expo/vector-icons'
 import { white, primary } from '../helpers/colors'
-import DeckList from '../containers/deck_list'
-import AddDeck from '../components/add_deck'
-import DeckShow from '../containers/deck_show'
-import DeckQuestion from '../containers/deck_question'
-import AddCard from '../components/add_card'
+import DeckList from '../containers/deckList'
+import AddDeck from '../components/addDeck'
+import DeckShow from '../containers/deckShow'
+import DeckQuiz from '../containers/deckQuiz'
+import AddCard from '../components/addCard'
 
 const Tabs = TabNavigator({
     DeckList:{
@@ -82,8 +82,8 @@ const Tabs = TabNavigator({
         }
       }
     },
-    DeckQuestion:{
-      screen: DeckQuestion,
+    DeckQuiz:{
+      screen: DeckQuiz,
       navigationOptions: {
         headerTintColor: white,
         headerStyle: {

@@ -1,5 +1,5 @@
-export * from './card_section'
+export * from './cardSection'
 export * from './card'
 export * from './button'
-export * from './text_input'
+export * from './textInput'
 export * from './confirm'

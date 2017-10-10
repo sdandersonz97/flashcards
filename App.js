@@ -1,6 +1,6 @@
 import React from 'react'
 import { StatusBar, View, AsyncStorage } from 'react-native'
-import MainNavigator from './components/main_navigator'
+import MainNavigator from './components/mainNavigator'
 import { createStore, applyMiddleware } from 'redux'
 import { Provider } from 'react-redux'
 import reducer from './reducers'

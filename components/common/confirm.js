@@ -1,6 +1,6 @@
 import React from 'react'
 import { Text, View, Modal, StyleSheet } from 'react-native'
-import { CardSection } from './card_section'
+import { CardSection } from './cardSection'
 import { Button } from './button'
 import { primary, red } from '../../helpers/colors'
 export const Confirm = ({ children, onAccept, onDecline, visible }) => {

@@ -5,7 +5,7 @@ import { Card, Button } from '../components/common'
 import { connect } from 'react-redux'
 import { white, primary } from '../helpers/colors'
 const dim = Dimensions.get("window")
-class DeckQuestion extends Component {
+class DeckQuiz extends Component {
     static navigationOptions = ({ navigation }) => {
         const { deckTitle } = navigation.state.params
         return {
@@ -46,8 +46,8 @@ class DeckQuestion extends Component {
         return(
             <View>
                 <DeckSwiper
-                    onSwipeLeft={this.onSwipeLeft.bind(this)}
-                    onSwipeRight={this.onSwipeRight.bind(this)}
+                    onSwipeLeft={this.onSwipeLeft}
+                    onSwipeRight={this.onSwipeRight}
                     dataSource={deck.questions}
                     renderItem={deck.questions.length > index ? question => (
                         <Card style={{ flex:1, height: dim.height-100 }}>
@@ -61,11 +61,11 @@ class DeckQuestion extends Component {
                             
                             {view === 'question' 
                             ?   <Button 
-                                    onPress={this.onPressChangeView.bind(this)} 
+                                    onPress={this.onPressChangeView} 
                                     text="View Answer"
                                 />
                             :   <Button 
-                                    onPress={this.onPressChangeView.bind(this)} 
+                                    onPress={this.onPressChangeView} 
                                     text="View Question"
                                 />
                             } 
@@ -123,4 +123,4 @@ function mapStateToProps(state, { navigation }){
         deck: state[deckTitle]
     }
 }
-export default connect(mapStateToProps)(DeckQuestion)
+export default connect(mapStateToProps)(DeckQuiz)
