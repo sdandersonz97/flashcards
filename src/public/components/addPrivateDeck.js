@@ -5,7 +5,7 @@ import { setLocalNotification, clearLocalNotification } from '../../utils/helper
 import { Card, CardSection, Button, TextInput } from '../../common'
 import { primary } from '../../styles/colors'
 import { fontStyles } from '../../styles' 
-
+import { addUserDeck } from '../actions'
 class AddPrivateDeck extends Component {
     state = {
         deckTitle: '',
@@ -16,6 +16,8 @@ class AddPrivateDeck extends Component {
         }))
     }
     submit = () => {
+        this.props.addUserDeck(this.state.deckTitle)
+        this.setState({ deckTitle: '' })
     }
     render(){
         const { deckTitle } = this.state
@@ -40,4 +42,4 @@ class AddPrivateDeck extends Component {
     }
 }
 
-export default connect()(AddPrivateDeck)
+export default connect(null, { addUserDeck })(AddPrivateDeck)

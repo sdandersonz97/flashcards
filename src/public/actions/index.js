@@ -1,8 +1,10 @@
 import firebase from 'firebase'
-import { userDecksRef, getCurrentUser } from '../../utils/firebaseRef'
+import { userDecksRef, getCurrentUser } from '../../utils/firebaseHelpers'
 import { FETCH_USER_DECKS, ADD_USER_DECK } from './types'
-const fetchUserDecks = () => {
-    return dispatch => userDecksRef(getCurrentUser()).on('value', snap => {
+
+
+export const fetchUserDecks = () => {
+    return dispatch => userDecksRef(getCurrentUser().uid).on('value', snap => {
         dispatch({
             type: FETCH_USER_DECKS,
             decks: snap.val()
@@ -10,6 +12,6 @@ const fetchUserDecks = () => {
     })
 }
 
-const addUserDeck = deckTitle => {
-    return () => userDecksRef(getCurrentUser()).push(deckTitle)
+export const addUserDeck = deckTitle => {
+    return () => userDecksRef(getCurrentUser().uid).push(deckTitle)
 }
