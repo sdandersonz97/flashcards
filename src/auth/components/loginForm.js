@@ -17,7 +17,7 @@ class LoginForm extends Component {
         const { loginUser, navigation } = this.props
         const { email, password } = this.state
         loginUser({ email, password }, () => navigation.navigate(
-            'PrivateDecks'
+            'LocalDecks'
         ))
     }
     renderButton = () => {
@@ -62,7 +62,7 @@ const styles = StyleSheet.create({
         color: 'red'
     }
 })
-const mapStateToProps = ({auth}) => {
+const mapStateToProps = ({ auth }) => {
     const { email, password, error, loading } = auth
     return {
         email,

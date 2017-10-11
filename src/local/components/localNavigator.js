@@ -54,7 +54,7 @@ const Tabs = TabNavigator({
       }
     }
   })
-  const MainNavigator = StackNavigator({
+  const LocalNavigator = {
     Home:{
       screen: Tabs
     },
@@ -94,6 +94,5 @@ const Tabs = TabNavigator({
         }
       }
     }
-  })
-
-  export default MainNavigator
+  }
+  export default LocalNavigator
