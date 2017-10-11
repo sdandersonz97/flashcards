@@ -6,7 +6,7 @@ import { blue, gray } from '../../styles/colors'
 import { recieveDecks } from '../actions'
 import { AppLoading } from 'expo'
 import { containersStyles, fontStyles } from  '../../styles'
-import Deck from '../components/deck'
+import { Deck } from '../../common'
 
 class DeckList extends Component {
     state = {

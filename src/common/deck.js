@@ -1,9 +1,8 @@
 import React, { Component } from 'react'
 import { View, Text, TouchableOpacity } from 'react-native'
-import { Card, CardSection } from '../../common'
-import { fontStyles } from '../../styles' 
-
-const Deck = (props) => {
+import { Card } from './card'
+import { fontStyles } from '../styles' 
+export const Deck = (props) => {
     const { deckTitle, questions, onClickNavigate } = props
     const { titleStyle, subtitleStyle } = fontStyles
     return(
@@ -15,4 +14,3 @@ const Deck = (props) => {
         </TouchableOpacity>
     )
 }
-export default Deck

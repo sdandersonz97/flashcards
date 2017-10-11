@@ -65,11 +65,4 @@ class AddDeck extends Component {
     }
 }
 
-styles={
-    container:{
-        flex: 1,
-        paddingHorizontal: 20,
-        paddingTop: 20,
-    }
-}
 export default connect(null,{ addDeckAction })(AddDeck)

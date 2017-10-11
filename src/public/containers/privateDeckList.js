@@ -3,7 +3,7 @@ import { connect } from 'react-redux'
 import { View, FlatList } from 'react-native'
 import { AppLoading } from 'expo'
 import { fontStyles, containersStyles } from '../../styles' 
-
+import { Deck } from '../../common'
 class privateDecksList extends Component {
     state = {
         ready: false
