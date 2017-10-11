@@ -5,6 +5,7 @@ import { Card, Button } from '../components/common'
 import { connect } from 'react-redux'
 import { white, primary } from '../styles/colors'
 import { fontStyles } from '../styles/fonts' 
+
 const dim = Dimensions.get("window")
 class DeckQuiz extends Component {
     static navigationOptions = ({ navigation }) => {

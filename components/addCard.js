@@ -6,15 +6,7 @@ import { connect } from 'react-redux'
 import { primary, white } from '../styles/colors'
 import { fontStyles } from '../styles/fonts' 
 import { Card, CardSection, Button, TextInput } from './common'
-import glamorous from 'glamorous-native'
 
-const ContainerView = glamorous.view({
-    flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
-    paddingTop: 25,
-    backgroundColor: '#ecf0f1'
-})
 class AddCard extends Component {
     static navigationOptions = ({ navigation }) => {
         const { deckTitle } = navigation.state.params

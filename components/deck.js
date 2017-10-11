@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import { View, Text, TouchableOpacity } from 'react-native'
-import glamorous from 'glamorous-native'
 import { Card, CardSection } from './common'
 import { fontStyles } from '../styles' 
 
