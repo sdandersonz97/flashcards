@@ -1,13 +1,14 @@
 import React, { Component } from 'react'
 import { Text, KeyboardAvoidingView } from 'react-native'
-import { primary } from '../helpers/colors'
-import { addDeck as addDeckAction } from '../actions'
-import { addDeck } from '../helpers/api'
 import { connect } from 'react-redux'
 import { NavigationActions } from 'react-navigation'
-import { Card, CardSection, Button, TextInput } from '../components/common'
+import { addDeck as addDeckAction } from '../actions'
 import { setLocalNotification, clearLocalNotification } from '../helpers/helpers'
-import { titleStyle, subtitleStyle } from '../helpers/fonts' 
+import { addDeck } from '../helpers/api'
+import { Card, CardSection, Button, TextInput } from '../components/common'
+import { primary } from '../styles/colors'
+import { titleStyle, subtitleStyle } from '../styles/fonts' 
+
 class AddDeck extends Component {
     state = {
         deckTitle: '',

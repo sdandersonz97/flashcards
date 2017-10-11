@@ -3,8 +3,8 @@ import { View, Text, Dimensions } from 'react-native'
 import { DeckSwiper } from 'native-base'
 import { Card, Button } from '../components/common'
 import { connect } from 'react-redux'
-import { white, primary } from '../helpers/colors'
-import { titleStyle, subtitleStyle } from '../helpers/fonts' 
+import { white, primary } from '../styles/colors'
+import { titleStyle, subtitleStyle } from '../styles/fonts' 
 const dim = Dimensions.get("window")
 class DeckQuiz extends Component {
     static navigationOptions = ({ navigation }) => {

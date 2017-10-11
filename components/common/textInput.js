@@ -1,6 +1,6 @@
 import React from 'react'
 import glamorous from 'glamorous-native'
-import { gray, white, primary } from '../../helpers/colors' 
+import { gray, white, primary } from '../../styles/colors' 
 import { Platform } from 'react-native'
 
 const Style = Platform.OS === 'ios' ? {

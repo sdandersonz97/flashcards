@@ -2,10 +2,11 @@ import React, { Component } from 'react'
 import { View, Text } from 'react-native'
 import { deleteDeck } from '../actions'
 import { connect } from 'react-redux'
-import { primary, white, red, green } from '../helpers/colors'
+import { primary, white, red, green } from '../styles/colors'
+import { titleStyle, subtitleStyle } from '../styles/fonts' 
 import { removeDeck } from '../helpers/api'
 import { Card, CardSection, Button, Confirm } from '../components/common'
-import { titleStyle, subtitleStyle } from '../helpers/fonts' 
+
 class DeckShow extends Component {
     static navigationOptions = ({ navigation }) => {
         const { deckTitle } = navigation.state.params

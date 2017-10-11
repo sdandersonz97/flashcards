@@ -3,9 +3,9 @@ import { Text, View, KeyboardAvoidingView } from 'react-native'
 import { addCard as addCardAction } from '../actions'
 import { addCardToDeck, fetchDeck } from '../helpers/api'
 import { connect } from 'react-redux'
-import { primary, white } from '../helpers/colors'
+import { primary, white } from '../styles/colors'
+import { titleStyle, subtitleStyle } from '../styles/fonts' 
 import { Card, CardSection, Button, TextInput } from './common'
-import { titleStyle, subtitleStyle } from '../helpers/fonts' 
 import glamorous from 'glamorous-native'
 
 const ContainerView = glamorous.view({

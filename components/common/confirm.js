@@ -2,8 +2,8 @@ import React from 'react'
 import { Text, View, Modal, StyleSheet } from 'react-native'
 import { CardSection } from './cardSection'
 import { Button } from './button'
-import { primary, red } from '../../helpers/colors'
-import { subtitleStyle } from '../../helpers/fonts' 
+import { primary, red } from '../../styles/colors'
+import { subtitleStyle } from '../../styles/fonts' 
 export const Confirm = ({ children, onAccept, onDecline, visible }) => {
     const { containerStyle, cardSectionStyle } = styles 
     return (
