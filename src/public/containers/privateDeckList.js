@@ -1,12 +1,13 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { View, FlatList } from 'react-native'
+import { View, FlatList, Text } from 'react-native'
 import { AppLoading } from 'expo'
 import { fontStyles, containersStyles } from '../../styles' 
-import { Deck } from '../../common'
+import { Deck, Spinner } from '../../common'
+import { fetchUserDecks } from '../actions'
 class privateDecksList extends Component {
-    state = {
-        ready: false
+    componentDidMount(){
+        this.props.fetchUserDecks()
     }
     renderDeck = ({ item }) => {
         const { deckTitle } = item
@@ -14,14 +15,11 @@ class privateDecksList extends Component {
         return <Deck onClickNavigate={() => navigate('DeckShow',{ deckTitle })} { ...item } />
     }
     render(){
-        const { ready } = this.state
         const { decks } = this.props
         const { titleStyle, subtitleStyle } = fontStyles
-
-        if(ready === false){
-            return <AppLoading />
-        }
-        return decks.length > 0
+        return !decks 
+        ? <Spinner/>
+        : decks.length > 0
             ?  <FlatList
                     data={decks}
                     renderItem={this.renderDeck}
@@ -33,7 +31,7 @@ class privateDecksList extends Component {
         }
     }
 
-const mapStateToProps = ({privateDecks}) => {
-    return { decks: privateDecks }
+const mapStateToProps = ({ privateDecks }) => {
+    return { decks: Object.keys(privateDecks).map(deck => privateDecks[deck]) }
 }
-export default connect(mapStateToProps)(privateDecksList)
+export default connect(mapStateToProps, { fetchUserDecks })(privateDecksList)
