@@ -4,10 +4,24 @@ import { TabNavigator, StackNavigator } from 'react-navigation'
 import { Ionicons, FontAwesome } from '@expo/vector-icons'
 import { white, primary } from '../../styles/colors'
 import PrivateDeckList from '../containers/privateDeckList'
-
+import AddPrivateDeck from './addPrivateDeck'
 const Tabs = TabNavigator({
     PrivateDeckList:{
       screen: PrivateDeckList,
+      navigationOptions: {
+        tabBarLabel: 'Decks',
+        tabBarIcon: ({ tintColor }) => <Ionicons name='ios-bookmarks' size={30} color={tintColor}/>,
+        title: 'Decks',
+        headerStyle:{
+          backgroundColor: primary
+        },
+        headerTitleStyle:{
+          color: white
+        }
+      }
+    },
+    AddPrivateDeck:{
+      screen: AddPrivateDeck,
       navigationOptions: {
         tabBarLabel: 'Decks',
         tabBarIcon: ({ tintColor }) => <Ionicons name='ios-bookmarks' size={30} color={tintColor}/>,

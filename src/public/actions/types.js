@@ -1,0 +1,2 @@
+export const FETCH_USER_DECKS = 'FETCH_USER_DECK'
+export const ADD_USER_DECK = 'ADD_USER_DECK'  
