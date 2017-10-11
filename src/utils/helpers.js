@@ -1,6 +1,6 @@
 import { AsyncStorage } from 'react-native'
 import { Permissions, Notifications } from 'expo'
-
+import firebase from 'firebase'
 const NOTIFICATION_KEY = 'flashcard:key'
 
 export function clearLocalNotification () {
@@ -47,4 +47,12 @@ export function setLocalNotification () {
         }
       })
     }})
+  }
+
+  export const getCurrentUser = () => {
+    try{
+        return firebase.auth().currentUser
+    } catch(error){
+        console.log(error)
+    }  
   }
