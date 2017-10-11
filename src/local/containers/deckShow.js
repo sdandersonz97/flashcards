@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { View, Text } from 'react-native'
-import { deleteDeck } from '../../actions'
+import { deleteDeck } from '../actions'
 import { connect } from 'react-redux'
 import { primary, white, red, green } from '../../styles/colors'
 import { fontStyles } from '../../styles/fonts' 
@@ -80,7 +80,7 @@ class DeckShow extends Component {
 function mapStateToProps(state,{ navigation }){
     const { deckTitle } = navigation.state.params
     return{
-        deck: state.privateDecks[deckTitle]
+        deck: state.localDecks[deckTitle]
     }
 }
 export default connect(mapStateToProps,{ deleteDeck })(DeckShow)

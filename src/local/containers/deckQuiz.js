@@ -123,7 +123,7 @@ class DeckQuiz extends Component {
 function mapStateToProps(state, { navigation }){
     const { deckTitle } = navigation.state.params
     return{
-        deck: state.privateDecks[deckTitle]
+        deck: state.localDecks[deckTitle]
     }
 }
 export default connect(mapStateToProps)(DeckQuiz)

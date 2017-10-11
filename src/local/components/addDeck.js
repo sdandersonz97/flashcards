@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { Text } from 'react-native'
 import { connect } from 'react-redux'
-import { addDeck as addDeckAction } from '../../actions'
+import { addDeck as addDeckAction } from '../actions'
 import { setLocalNotification, clearLocalNotification } from '../../utils/helpers'
 import { addDeck } from '../../utils/api'
 import { Card, CardSection, Button, TextInput } from '../../common'
