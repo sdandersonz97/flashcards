@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
 import { View, Text, Animated, Easing } from 'react-native'
-import { Card, CardSection, Button } from '../components/common'
+import { Card } from './card'
+import { CardSection} from './cardSection'
+import { Button } from './button'
 
 const CardAnimated = Animated.createAnimatedComponent(Card)
 class CardAnimatedSlide extends Component {

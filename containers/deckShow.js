@@ -5,7 +5,7 @@ import { connect } from 'react-redux'
 import { primary, white, red, green } from '../styles/colors'
 import { fontStyles } from '../styles/fonts' 
 import { removeDeck } from '../utils/api'
-import { Card, CardSection, Button, Confirm } from '../components/common'
+import { Card, CardSection, Button, Confirm } from '../common'
 
 class DeckShow extends Component {
     static navigationOptions = ({ navigation }) => {

@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { View, Text, Dimensions } from 'react-native'
 import { DeckSwiper } from 'native-base'
-import { Card, Button } from '../components/common'
+import { Card, Button } from '../common'
 import { connect } from 'react-redux'
 import { white, primary } from '../styles/colors'
 import { fontStyles } from '../styles/fonts' 

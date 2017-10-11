@@ -5,7 +5,7 @@ import { addCardToDeck, fetchDeck } from '../utils/api'
 import { connect } from 'react-redux'
 import { primary, white } from '../styles/colors'
 import { fontStyles } from '../styles/fonts' 
-import { Card, CardSection, Button, TextInput } from './common'
+import { Card, CardSection, Button, TextInput } from '../common'
 
 class AddCard extends Component {
     static navigationOptions = ({ navigation }) => {
