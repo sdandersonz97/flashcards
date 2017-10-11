@@ -17,7 +17,7 @@ class LoginForm extends Component {
         const { loginUser, navigation } = this.props
         const { email, password } = this.state
         email && password
-        ? loginUser({ email, password }, () => navigation.navigate('Public'))
+        ? loginUser({ email, password }, () => navigation.navigate('Private'))
         : alert('Please provide a email and password')
     }
     onLocalSignIn = () => {

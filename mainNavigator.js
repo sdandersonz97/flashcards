@@ -1,5 +1,6 @@
 import React from 'react'
 import LocalNavigator from './src/local/components/localNavigator'
+import PrivateNavigator from './src/public/components/privateNavigator'
 import LoginForm from './src/auth/components/loginForm'
 import { StackNavigator } from 'react-navigation'
 import { Platform } from 'react-native'
@@ -18,6 +19,9 @@ const MainNavigator = StackNavigator({
     Local: {
         screen: LocalNavigator
     },
+    Private: {
+        screen: PrivateNavigator
+    }
   })
 
   export default MainNavigator
