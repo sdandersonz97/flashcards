@@ -2,6 +2,7 @@ import React from 'react'
 import { StatusBar, View, AsyncStorage } from 'react-native'
 import MainNavigator from './mainNavigator'
 import { createStore, applyMiddleware } from 'redux'
+import ReduxThunk from 'redux-thunk'
 import { Provider } from 'react-redux'
 import reducers from './src/reducers'
 import { Constants } from 'expo'
@@ -18,15 +19,16 @@ function CardsStatusBar({ backgroundColor, ...props}){
 }
 
 export default class App extends React.Component {
-  componentdidMount(){
+  componentWillMount(){
     firebase.initializeApp(config)
   }
   componentDidMount(){
     setLocalNotification()
   }
   render() {
+    const store = createStore(reducers, applyMiddleware(ReduxThunk))
     return (
-      <Provider store={createStore(reducers)}>
+      <Provider store={store}>
         <View style={{ flex:1 }}>
           <CardsStatusBar backgroundColor={primary} barStyle='light-content'/>
           <MainNavigator/>
