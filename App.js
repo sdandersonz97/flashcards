@@ -3,7 +3,7 @@ import { StatusBar, View, AsyncStorage } from 'react-native'
 import MainNavigator from './src/local/components/mainNavigator'
 import { createStore, applyMiddleware } from 'redux'
 import { Provider } from 'react-redux'
-import reducer from './src/reducers'
+import reducers from './src/reducers'
 import { Constants } from 'expo'
 import { primary } from './src/styles/colors'
 import { setLocalNotification } from './src/utils/helpers'
@@ -21,7 +21,7 @@ export default class App extends React.Component {
   }
   render() {
     return (
-      <Provider store={createStore(reducer)}>
+      <Provider store={createStore(reducers)}>
         <View style={{ flex:1 }}>
           <CardsStatusBar backgroundColor={primary} barStyle='light-content'/>
           <MainNavigator/>

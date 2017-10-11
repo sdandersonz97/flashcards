@@ -80,7 +80,7 @@ class DeckShow extends Component {
 function mapStateToProps(state,{ navigation }){
     const { deckTitle } = navigation.state.params
     return{
-        deck: state[deckTitle]
+        deck: state.privateDecks[deckTitle]
     }
 }
 export default connect(mapStateToProps,{ deleteDeck })(DeckShow)

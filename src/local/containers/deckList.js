@@ -6,7 +6,7 @@ import { blue, gray } from '../../styles/colors'
 import { recieveDecks } from '../../actions'
 import { AppLoading } from 'expo'
 import { containersStyles, fontStyles } from  '../../styles'
-import Deck from '../../components/deck'
+import Deck from '../components/deck'
 
 class DeckList extends Component {
     state = {
@@ -44,7 +44,7 @@ class DeckList extends Component {
 }
 function mapStateToProps(state){
     return {
-        decks: Object.keys(state).map(deck => state[deck])
+        decks: Object.keys(state.privateDecks).map(deck => state.privateDecks[deck])
     }
 }
 export default connect(mapStateToProps,{ recieveDecks })(DeckList)
