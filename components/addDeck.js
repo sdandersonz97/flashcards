@@ -7,7 +7,7 @@ import { connect } from 'react-redux'
 import { NavigationActions } from 'react-navigation'
 import { Card, CardSection, Button, TextInput } from '../components/common'
 import { setLocalNotification, clearLocalNotification } from '../helpers/helpers'
-
+import { titleStyle, subtitleStyle } from '../helpers/fonts' 
 class AddDeck extends Component {
     state = {
         deckTitle: '',
@@ -46,7 +46,7 @@ class AddDeck extends Component {
         const { deckTitle } = this.state
         return(   
             <Card style={{flex:1}}>
-                <Text style={{ fontSize:28 }}> Add a title for your deck! </Text> 
+                <Text style={titleStyle}> Add a title for your deck! </Text> 
                     <TextInput
                         value={deckTitle}
                         onChangeText={this.handleTextChange}

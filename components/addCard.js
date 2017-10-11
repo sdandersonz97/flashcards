@@ -5,6 +5,7 @@ import { addCardToDeck, fetchDeck } from '../helpers/api'
 import { connect } from 'react-redux'
 import { primary, white } from '../helpers/colors'
 import { Card, CardSection, Button, TextInput } from './common'
+import { titleStyle, subtitleStyle } from '../helpers/fonts' 
 import glamorous from 'glamorous-native'
 
 const ContainerView = glamorous.view({
@@ -64,13 +65,13 @@ class AddCard extends Component {
         const { question, answer } = this.state
         return(
             <Card style={{flex:1}}>
-                <Text style={{fontSize:25, margin:20}}> Question </Text>
+                <Text style={titleStyle}> Question </Text>
                 <TextInput 
                     value={question} 
                     onChangeText={this.onQuestionChange} 
                     placeholder="What's your name"
                 />    
-                <Text style={{fontSize:25, margin:20}}> Answer </Text>
+                <Text style={titleStyle}> Answer </Text>
                 <TextInput 
                     value={answer} 
                     onChangeText={this.onAnswerChange}

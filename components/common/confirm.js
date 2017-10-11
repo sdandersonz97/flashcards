@@ -3,8 +3,9 @@ import { Text, View, Modal, StyleSheet } from 'react-native'
 import { CardSection } from './cardSection'
 import { Button } from './button'
 import { primary, red } from '../../helpers/colors'
+import { subtitleStyle } from '../../helpers/fonts' 
 export const Confirm = ({ children, onAccept, onDecline, visible }) => {
-    const { containerStyle, textStyle, cardSectionStyle } = styles 
+    const { containerStyle, cardSectionStyle } = styles 
     return (
         <Modal
             animationType="slide"
@@ -14,7 +15,7 @@ export const Confirm = ({ children, onAccept, onDecline, visible }) => {
         >
             <View style={containerStyle}>
                 <CardSection style={cardSectionStyle}>
-                    <Text style={textStyle}>{children}</Text>
+                    <Text style={subtitleStyle}>{children}</Text>
                 </CardSection>
                 <CardSection>
                     <Button onPress={onAccept} style={{backgroundColor:primary, margin:10}} text="Yes"/>
@@ -28,11 +29,6 @@ export const Confirm = ({ children, onAccept, onDecline, visible }) => {
 const styles = StyleSheet.create({
     cardSectionStyle: {
         justifyContent: 'center'
-    },
-    textStyle: {
-        fontSize: 18,
-        textAlign: 'center',
-        lineHeight: 40
     },
     containerStyle: {
         backgroundColor: 'rgba(0, 0, 0, 0.75)',

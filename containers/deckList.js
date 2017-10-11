@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { Text, View, FlatList, AsyncStorage } from 'react-native'
 import { fetchDecks, fetchDeck } from '../helpers/api' 
+import { titleStyle, subtitleStyle } from '../helpers/fonts' 
 import { blue, gray } from '../helpers/colors'
 import { recieveDecks } from '../actions'
 import { AppLoading } from 'expo'
@@ -16,8 +17,6 @@ class DeckList extends Component {
         fetchDecks()
             .then(res => recieveDecks(res))
         this.setState({ ready:true })
-        //AsyncStorage.removeItem('DECKS')
-
     }
     renderDeck = ({ item }) => {
         const{ deckTitle } = item
@@ -35,8 +34,8 @@ class DeckList extends Component {
                     renderItem={this.renderDeck}
                 />
             :   <View style={{flex:1, justifyContent:'center', alignItems:'center'}}>
-                    <Text style={{fontSize:30}}> No decks available </Text>
-                    <Text style={{fontSize:20}}> add some decks to get started! </Text>
+                    <Text style={titleStyle}> No decks available </Text>
+                    <Text style={subtitleStyle}> add some decks to get started! </Text>
                 </View>
         }
 }

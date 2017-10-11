@@ -5,6 +5,7 @@ import { connect } from 'react-redux'
 import { primary, white, red, green } from '../helpers/colors'
 import { removeDeck } from '../helpers/api'
 import { Card, CardSection, Button, Confirm } from '../components/common'
+import { titleStyle, subtitleStyle } from '../helpers/fonts' 
 class DeckShow extends Component {
     static navigationOptions = ({ navigation }) => {
         const { deckTitle } = navigation.state.params
@@ -36,12 +37,12 @@ class DeckShow extends Component {
                 <Card style={{flex:1}}>
                     <CardSection>
                         <Text 
-                            style={{fontSize:40, textAlign:'center', margin:20 }}
+                            style={titleStyle}
                         >
                             {deckTitle} 
                         </Text>
                         <Text 
-                            style={{fontSize:20, textAlign:'center'}}
+                            style={subtitleStyle}
                         > 
                             { questions.length } Cards 
                         </Text> 

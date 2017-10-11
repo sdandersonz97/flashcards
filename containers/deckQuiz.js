@@ -4,6 +4,7 @@ import { DeckSwiper } from 'native-base'
 import { Card, Button } from '../components/common'
 import { connect } from 'react-redux'
 import { white, primary } from '../helpers/colors'
+import { titleStyle, subtitleStyle } from '../helpers/fonts' 
 const dim = Dimensions.get("window")
 class DeckQuiz extends Component {
     static navigationOptions = ({ navigation }) => {
@@ -53,7 +54,7 @@ class DeckQuiz extends Component {
                         <Card style={{ flex:1, height: dim.height-100 }}>
                             <View style={{ margin: 10 }}>
                                 <Text 
-                                    style={{ fontSize:25, alignSelf:'center' }}
+                                    style={subtitleStyle}
                                 >
                                     { view === 'question' ? question.question : question.answer }
                                 </Text>
@@ -70,7 +71,7 @@ class DeckQuiz extends Component {
                                 />
                             } 
                             <Text 
-                                style={{fontSize:15, alignSelf:'center'}}
+                                style={subtitleStyle}
                             >
                                 {`${index+1}/${deck.questions.length}`}
                             </Text> 
@@ -85,8 +86,8 @@ class DeckQuiz extends Component {
                         </Card>)
                         : () => (
                             <Card style={{flex:1, height: dim.height-100}}>
-                                <Text style={{fontSize:18, alignSelf:'center', margin: 10}}> You have finished the {deck.deckTitle} Quiz </Text>
-                                <Text style={{fontSize:12, alignSelf:'center', margin: 10}}> You have answer {corrects} questions correctly of {deck.questions.length}  Quiz </Text>
+                                <Text style={titleStyle}> You have finished the {deck.deckTitle} Quiz </Text>
+                                <Text style={subtitleStyle}> You have answer {corrects} questions correctly of {deck.questions.length}  Quiz </Text>
                                 <Button 
                                     text="Go to deck"
                                     style={{backgroundColor: primary, margin: 10}}
@@ -104,7 +105,7 @@ class DeckQuiz extends Component {
                 renderEmpty={() => (
                         <Card style={{height: dim.height-100}}>
                             <View style={{margin:20, justifyContent:'center', alignItems:'center'}}>
-                                <Text style={{fontSize:18}}>You don't have cards in this deck, please add some cards first. </Text>
+                                <Text style={titleStyle}>You don't have cards in this deck, please add some cards first. </Text>
                                 <Button 
                                     text="Add Card"
                                     style={{backgroundColor: primary, margin: 10}}
