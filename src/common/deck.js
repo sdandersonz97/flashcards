@@ -9,7 +9,7 @@ export const Deck = (props) => {
         <TouchableOpacity onPress={()=>onClickNavigate()} >
             <Card>
                 <Text style={titleStyle}> { deckTitle }  </Text> 
-                <Text style={subtitleStyle}> { questions.length } Cards </Text> 
+                <Text style={subtitleStyle}> { questions ? questions.length : 0 } Cards </Text> 
             </Card>
         </TouchableOpacity>
     )
