@@ -1,18 +1,23 @@
+import React from 'react'
 import LocalNavigator from './src/local/components/localNavigator'
 import LoginForm from './src/auth/components/loginForm'
 import { StackNavigator } from 'react-navigation'
+import { Platform } from 'react-native'
+import { white, primary } from './src/styles/colors'
 const MainNavigator = StackNavigator({
     LoginForm: {
         screen: LoginForm,
         navigationOptions: {
-            headerTinkColor: 'white',
+            headerTinkColor: white,
             headerStyle: {
-              backgroundColor: '#007aff'
+              backgroundColor: primary
             },
             title:'Welcome'
         }
     },
-    ...LocalNavigator,
+    Local: {
+        screen: LocalNavigator
+    },
   })
 
   export default MainNavigator

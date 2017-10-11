@@ -3,7 +3,7 @@ import { Card, CardSection, TextInput, Button,  } from '../../common'
 import { Text, StyleSheet } from 'react-native'
 import { loginUser } from '../actions'
 import { connect } from 'react-redux'
-import { appLoading } from 'expo'
+import { AppLoading } from 'expo'
 class LoginForm extends Component {
     state={
         email: '',
@@ -13,17 +13,23 @@ class LoginForm extends Component {
 
     onPasswordChange = password => this.setState({ password })
 
-    onButtonPress = () => {
+    onPublicSignIn = () => {
         const { loginUser, navigation } = this.props
         const { email, password } = this.state
-        loginUser({ email, password }, () => navigation.navigate(
-            'LocalDecks'
-        ))
+        email && password
+        ? loginUser({ email, password }, () => navigation.navigate('Public'))
+        : alert('Please provide a email and password')
+    }
+    onLocalSignIn = () => {
+        this.props.navigation.navigate('Local')
     }
     renderButton = () => {
         return !this.props.loading 
-            ?   <Button onPress={this.onButtonPress.bind(this)} text='Login'/>
-            :   <appLoading />
+            ?   [
+                    <Button key="public" onPress={this.onPublicSignIn.bind(this)} text='Login'/>, 
+                    <Button key="local" onPress={this.onLocalSignIn.bind(this)} text='Local'/>
+                ]
+            :   <AppLoading/>
     }
     render() {
         return(
@@ -63,10 +69,8 @@ const styles = StyleSheet.create({
     }
 })
 const mapStateToProps = ({ auth }) => {
-    const { email, password, error, loading } = auth
+    const { error, loading } = auth
     return {
-        email,
-        password,
         error,
         loading
     }
