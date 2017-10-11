@@ -4,7 +4,7 @@ import { deleteDeck } from '../actions'
 import { connect } from 'react-redux'
 import { primary, white, red, green } from '../styles/colors'
 import { fontStyles } from '../styles/fonts' 
-import { removeDeck } from '../helpers/api'
+import { removeDeck } from '../utils/api'
 import { Card, CardSection, Button, Confirm } from '../components/common'
 
 class DeckShow extends Component {

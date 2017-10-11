@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { Text, View, KeyboardAvoidingView } from 'react-native'
 import { addCard as addCardAction } from '../actions'
-import { addCardToDeck, fetchDeck } from '../helpers/api'
+import { addCardToDeck, fetchDeck } from '../utils/api'
 import { connect } from 'react-redux'
 import { primary, white } from '../styles/colors'
 import { fontStyles } from '../styles/fonts' 

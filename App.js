@@ -6,7 +6,7 @@ import { Provider } from 'react-redux'
 import reducer from './reducers'
 import { Constants } from 'expo'
 import { primary } from './styles/colors'
-import { setLocalNotification } from './helpers/helpers'
+import { setLocalNotification } from './utils/helpers'
 function CardsStatusBar({ backgroundColor, ...props}){
   return(
     <View style={{ backgroundColor, height: Constants.statusBarHeight }}>

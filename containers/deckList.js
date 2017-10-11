@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { Text, View, FlatList, AsyncStorage } from 'react-native'
-import { fetchDecks, fetchDeck } from '../helpers/api' 
+import { fetchDecks, fetchDeck } from '../utils/api' 
 import { blue, gray } from '../styles/colors'
 import { recieveDecks } from '../actions'
 import { AppLoading } from 'expo'
