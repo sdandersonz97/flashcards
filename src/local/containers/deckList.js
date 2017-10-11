@@ -1,12 +1,12 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { Text, View, FlatList } from 'react-native'
-import { fetchDecks } from '../utils/api' 
-import { blue, gray } from '../styles/colors'
-import { recieveDecks } from '../actions'
+import { fetchDecks } from '../../utils/api' 
+import { blue, gray } from '../../styles/colors'
+import { recieveDecks } from '../../actions'
 import { AppLoading } from 'expo'
-import { containersStyles, fontStyles } from  '../styles'
-import Deck from '../components/deck'
+import { containersStyles, fontStyles } from  '../../styles'
+import Deck from '../../components/deck'
 
 class DeckList extends Component {
     state = {

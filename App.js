@@ -1,12 +1,12 @@
 import React from 'react'
 import { StatusBar, View, AsyncStorage } from 'react-native'
-import MainNavigator from './components/mainNavigator'
+import MainNavigator from './src/local/components/mainNavigator'
 import { createStore, applyMiddleware } from 'redux'
 import { Provider } from 'react-redux'
-import reducer from './reducers'
+import reducer from './src/reducers'
 import { Constants } from 'expo'
-import { primary } from './styles/colors'
-import { setLocalNotification } from './utils/helpers'
+import { primary } from './src/styles/colors'
+import { setLocalNotification } from './src/utils/helpers'
 function CardsStatusBar({ backgroundColor, ...props}){
   return(
     <View style={{ backgroundColor, height: Constants.statusBarHeight }}>

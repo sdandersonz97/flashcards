@@ -1,10 +1,10 @@
 import React, { Component } from 'react'
 import { View, Text, Dimensions } from 'react-native'
 import { DeckSwiper } from 'native-base'
-import { Card, Button } from '../common'
+import { Card, Button } from '../../common'
 import { connect } from 'react-redux'
-import { white, primary } from '../styles/colors'
-import { fontStyles } from '../styles/fonts' 
+import { white, primary } from '../../styles/colors'
+import { fontStyles } from '../../styles/fonts' 
 
 const dim = Dimensions.get("window")
 class DeckQuiz extends Component {

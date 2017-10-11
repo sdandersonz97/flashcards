@@ -2,12 +2,12 @@ import React from 'react'
 import { Platform } from 'react-native'
 import { TabNavigator, StackNavigator } from 'react-navigation'
 import { Ionicons, FontAwesome } from '@expo/vector-icons'
-import { white, primary } from '../styles/colors'
+import { white, primary } from '../../styles/colors'
 import DeckList from '../containers/deckList'
-import AddDeck from '../components/addDeck'
+import AddDeck from './addDeck'
 import DeckShow from '../containers/deckShow'
 import DeckQuiz from '../containers/deckQuiz'
-import AddCard from '../components/addCard'
+import AddCard from './addCard'
 
 const Tabs = TabNavigator({
     DeckList:{

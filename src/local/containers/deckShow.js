@@ -1,11 +1,11 @@
 import React, { Component } from 'react'
 import { View, Text } from 'react-native'
-import { deleteDeck } from '../actions'
+import { deleteDeck } from '../../actions'
 import { connect } from 'react-redux'
-import { primary, white, red, green } from '../styles/colors'
-import { fontStyles } from '../styles/fonts' 
-import { removeDeck } from '../utils/api'
-import { Card, CardSection, Button, Confirm } from '../common'
+import { primary, white, red, green } from '../../styles/colors'
+import { fontStyles } from '../../styles/fonts' 
+import { removeDeck } from '../../utils/api'
+import { Card, CardSection, Button, Confirm } from '../../common'
 
 class DeckShow extends Component {
     static navigationOptions = ({ navigation }) => {
