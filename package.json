@@ -20,6 +20,7 @@
   },
   "dependencies": {
     "expo": "^21.0.2",
+    "firebase": "^4.5.0",
     "glamorous-native": "^1.1.2",
     "lodash": "^4.17.4",
     "native-base": "^2.3.2",

@@ -7,6 +7,8 @@ import reducers from './src/reducers'
 import { Constants } from 'expo'
 import { primary } from './src/styles/colors'
 import { setLocalNotification } from './src/utils/helpers'
+import { config } from './src/utils/firebaseConfig'
+import firebase from 'firebase'
 function CardsStatusBar({ backgroundColor, ...props}){
   return(
     <View style={{ backgroundColor, height: Constants.statusBarHeight }}>
@@ -16,6 +18,9 @@ function CardsStatusBar({ backgroundColor, ...props}){
 }
 
 export default class App extends React.Component {
+  componentdidMount(){
+    firebase.initializeApp(config)
+  }
   componentDidMount(){
     setLocalNotification()
   }
