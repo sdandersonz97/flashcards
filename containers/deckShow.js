@@ -3,7 +3,7 @@ import { View, Text } from 'react-native'
 import { deleteDeck } from '../actions'
 import { connect } from 'react-redux'
 import { primary, white, red, green } from '../styles/colors'
-import { titleStyle, subtitleStyle } from '../styles/fonts' 
+import { fontStyles } from '../styles/fonts' 
 import { removeDeck } from '../helpers/api'
 import { Card, CardSection, Button, Confirm } from '../components/common'
 
@@ -34,6 +34,7 @@ class DeckShow extends Component {
     render(){
         const { navigation } = this.props
         const { deckTitle, questions } = this.props.deck 
+        const { titleStyle, subtitleStyle } = fontStyles
         return(
                 <Card style={{flex:1}}>
                     <CardSection>

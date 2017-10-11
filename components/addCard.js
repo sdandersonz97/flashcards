@@ -4,7 +4,7 @@ import { addCard as addCardAction } from '../actions'
 import { addCardToDeck, fetchDeck } from '../helpers/api'
 import { connect } from 'react-redux'
 import { primary, white } from '../styles/colors'
-import { titleStyle, subtitleStyle } from '../styles/fonts' 
+import { fontStyles } from '../styles/fonts' 
 import { Card, CardSection, Button, TextInput } from './common'
 import glamorous from 'glamorous-native'
 
@@ -63,6 +63,7 @@ class AddCard extends Component {
     }
     render(){
         const { question, answer } = this.state
+        const { titleStyle, subtitleStyle } = fontStyles
         return(
             <Card style={{flex:1}}>
                 <Text style={titleStyle}> Question </Text>

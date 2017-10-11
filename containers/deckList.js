@@ -2,10 +2,10 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { Text, View, FlatList, AsyncStorage } from 'react-native'
 import { fetchDecks, fetchDeck } from '../helpers/api' 
-import { titleStyle, subtitleStyle } from '../styles/fonts' 
 import { blue, gray } from '../styles/colors'
 import { recieveDecks } from '../actions'
 import { AppLoading } from 'expo'
+import { containersStyles, fontStyles } from  '../styles'
 import Deck from '../components/deck'
 
 class DeckList extends Component {
@@ -19,12 +19,15 @@ class DeckList extends Component {
         this.setState({ ready:true })
     }
     renderDeck = ({ item }) => {
-        const{ deckTitle } = item
-        return <Deck onClickNavigate={() => this.props.navigation.navigate('DeckShow',{ deckTitle })} { ...item } />
+        const { deckTitle } = item
+        const { navigate } = this.props.navigation
+        return <Deck onClickNavigate={() => navigate('DeckShow',{ deckTitle })} { ...item } />
     }
     render(){
         const { ready } = this.state
         const { decks } = this.props
+        const { titleStyle, subtitleStyle } = fontStyles
+
         if(ready === false){
             return <AppLoading />
         }
@@ -33,7 +36,7 @@ class DeckList extends Component {
                     data={decks}
                     renderItem={this.renderDeck}
                 />
-            :   <View style={{flex:1, justifyContent:'center', alignItems:'center'}}>
+            :   <View style={containersStyles.containerView}>
                     <Text style={titleStyle}> No decks available </Text>
                     <Text style={subtitleStyle}> add some decks to get started! </Text>
                 </View>

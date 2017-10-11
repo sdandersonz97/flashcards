@@ -4,7 +4,7 @@ import { DeckSwiper } from 'native-base'
 import { Card, Button } from '../components/common'
 import { connect } from 'react-redux'
 import { white, primary } from '../styles/colors'
-import { titleStyle, subtitleStyle } from '../styles/fonts' 
+import { fontStyles } from '../styles/fonts' 
 const dim = Dimensions.get("window")
 class DeckQuiz extends Component {
     static navigationOptions = ({ navigation }) => {
@@ -44,6 +44,7 @@ class DeckQuiz extends Component {
     render(){
         const { deck, navigation } = this.props
         const { index, view, corrects, incorrects } = this.state
+        const { titleStyle, subtitleStyle } = fontStyles
         return(
             <View>
                 <DeckSwiper

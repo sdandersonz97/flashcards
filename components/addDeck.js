@@ -7,7 +7,7 @@ import { setLocalNotification, clearLocalNotification } from '../helpers/helpers
 import { addDeck } from '../helpers/api'
 import { Card, CardSection, Button, TextInput } from '../components/common'
 import { primary } from '../styles/colors'
-import { titleStyle, subtitleStyle } from '../styles/fonts' 
+import { fontStyles} from '../styles' 
 
 class AddDeck extends Component {
     state = {
@@ -45,6 +45,7 @@ class AddDeck extends Component {
     }
     render(){
         const { deckTitle } = this.state
+        const { titleStyle, subtitleStyle } = fontStyles
         return(   
             <Card style={{flex:1}}>
                 <Text style={titleStyle}> Add a title for your deck! </Text> 

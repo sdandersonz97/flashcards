@@ -2,10 +2,11 @@ import React, { Component } from 'react'
 import { View, Text, TouchableOpacity } from 'react-native'
 import glamorous from 'glamorous-native'
 import { Card, CardSection } from './common'
-import { titleStyle, subtitleStyle } from '../styles/fonts' 
+import { fontStyles } from '../styles' 
 
 const Deck = (props) => {
     const { deckTitle, questions, onClickNavigate } = props
+    const { titleStyle, subtitleStyle } = fontStyles
     return(
         <TouchableOpacity onPress={()=>onClickNavigate()} >
             <Card>
