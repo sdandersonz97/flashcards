@@ -20,7 +20,7 @@ class PrivateDeckShow extends Component {
     onDecline = () => { this.setState({ showConfirm:false })}
     render(){
         const { navigation } = this.props
-        const { deckTitle, questions } = this.props.deck 
+        const { deckTitle, questions, key } = this.props.deck 
         const { titleStyle, subtitleStyle } = fontStyles
         return(
                 <Card style={{flex:1}}>
@@ -38,12 +38,12 @@ class PrivateDeckShow extends Component {
                     </CardSection>
                     <CardSection>
                         <Button 
-                            onPress={() => navigation.navigate('PrivateAddCard',{ deckTitle })} 
+                            onPress={() => navigation.navigate('AddPrivateCard',{ key })} 
                             style={{ backgroundColor: primary, margin: 10}} 
                             text="ADD CARD"
                         /> 
                         <Button 
-                            onPress={() => navigation.navigate('PrivateDeckQuiz',{ deckTitle })} 
+                            onPress={() => navigation.navigate('PrivateDeckQuiz',{ key })} 
                             style={{ backgroundColor: green,  margin: 10}} 
                             text="START QUIZ" 
                         />
