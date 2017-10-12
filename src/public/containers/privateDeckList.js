@@ -10,9 +10,9 @@ class privateDecksList extends Component {
         this.props.fetchUserDecks()
     }
     renderDeck = ({ item }) => {
-        const { deckTitle } = item
+        const { key } = item
         const { navigate } = this.props.navigation
-        return <Deck onClickNavigate={() => navigate('DeckShow',{ deckTitle })} { ...item } />
+        return <Deck onClickNavigate={() => navigate('PrivateDeckShow',{ key })} { ...item } />
     }
     render(){
         const { decks } = this.props

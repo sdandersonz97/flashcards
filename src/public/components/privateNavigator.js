@@ -5,6 +5,7 @@ import { Ionicons, FontAwesome } from '@expo/vector-icons'
 import { white, primary } from '../../styles/colors'
 import PrivateDeckList from '../containers/privateDeckList'
 import AddPrivateDeck from './addPrivateDeck'
+import PrivateDeckShow from '../containers/privateDeckShow'
 const Tabs = TabNavigator({
     PrivateDeckList:{
       screen: PrivateDeckList,
@@ -53,6 +54,18 @@ const Tabs = TabNavigator({
   const PrivateNavigator = StackNavigator({
     Home: {
         screen: Tabs
+    },
+    PrivateDeckShow:{
+      screen: PrivateDeckShow,
+      navigationOptions: {
+        headerTintColor: white,
+        headerStyle: {
+          backgroundColor: primary
+        },
+        headerTitleStyle:{
+          color: white
+        }
+      }
     }
     },{
     headerMode: 'none'

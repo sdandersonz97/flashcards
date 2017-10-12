@@ -15,7 +15,7 @@ export const fetchUserDecks = () => {
 
 export const addUserDeck = deckTitle => {
     const key = userDecksRef(getCurrentUser().uid).push().key
-    return () => userDecksRef(getCurrentUser().uid).push({
+    return () => userDecksRef(getCurrentUser().uid).child(key).set({
         key,
         deckTitle
     })
