@@ -1,3 +1,4 @@
+import _ from 'lodash'
 import React, { Component } from 'react'
 import { View, Text, TouchableOpacity } from 'react-native'
 import { Card } from './card'
@@ -9,7 +10,7 @@ export const Deck = (props) => {
         <TouchableOpacity onPress={()=>onClickNavigate()} >
             <Card>
                 <Text style={titleStyle}> { deckTitle }  </Text> 
-                <Text style={subtitleStyle}> { questions ? questions.length : 0 } Cards </Text> 
+                <Text style={subtitleStyle}> { questions ? _.size(questions) : 0 } Cards </Text> 
             </Card>
         </TouchableOpacity>
     )

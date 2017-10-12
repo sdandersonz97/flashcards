@@ -1,3 +1,4 @@
+import _ from 'lodash'
 import React, { Component } from 'react'
 import { View, Text } from 'react-native'
 import { connect } from 'react-redux'
@@ -33,7 +34,7 @@ class PrivateDeckShow extends Component {
                         <Text 
                             style={subtitleStyle}
                         > 
-                            { questions ? questions.length : 0 } Cards 
+                            { questions ? _.size(questions) : 0 } Cards 
                         </Text> 
                     </CardSection>
                     <CardSection>

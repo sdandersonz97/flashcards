@@ -4,7 +4,7 @@ import { connect } from 'react-redux'
 import { primary, white } from '../../styles/colors'
 import { fontStyles } from '../../styles/fonts' 
 import { Card, CardSection, Button, TextInput } from '../../common'
-
+import { addUserCardToDeck } from '../actions'
 class AddPrivateCard extends Component {
     state = {
         question: "",
@@ -23,9 +23,10 @@ class AddPrivateCard extends Component {
     onSubmit = () => {
         const { question, answer } = this.state
         const { key } = this.props.navigation.state.params
-        const { navigation } = this.props
+        const { navigation, addUserCardToDeck } = this.props
 
-        if(question){
+        if(question && answer){
+            addUserCardToDeck(key, { question, answer })
             this.setState(() => ({
                 question: '',
                 answer: '' 
@@ -63,4 +64,4 @@ class AddPrivateCard extends Component {
     }
 }
 
-export default connect(null)(AddPrivateCard)
+export default connect(null, { addUserCardToDeck })(AddPrivateCard)
