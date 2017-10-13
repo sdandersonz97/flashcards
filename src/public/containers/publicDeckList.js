@@ -16,7 +16,12 @@ class PublicDecksList extends Component {
     renderDeck = ({ item }) => {
         const { key } = item
         const { navigate } = this.props.navigation
-        return <Deck onClickNavigate={(screen) => navigate(screen,{ key })} { ...item } />
+        const buttons = [
+        {
+            name:"Start Quiz",
+            action: ()=>navigate('PrivateDeckQuiz')
+        }]
+        return <Deck onClickNavigate={(screen) => navigate(screen,{ key })} actionSheet={buttons} { ...item } />
     }
     render(){
         const { decks } = this.props

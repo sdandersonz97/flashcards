@@ -2,7 +2,7 @@ import React from 'react'
 import { Platform } from 'react-native'
 import { TabNavigator, StackNavigator } from 'react-navigation'
 import { Ionicons, FontAwesome } from '@expo/vector-icons'
-import { white, primary } from '../../styles/colors'
+import { white, headerColor, primary } from '../../styles/colors'
 import PrivateDeckList from '../containers/privateDeckList'
 import PublicDeckList from '../containers/publicDeckList'
 import AddPrivateDeck from './addPrivateDeck'
@@ -17,7 +17,7 @@ const Tabs = TabNavigator({
       tabBarIcon: ({ tintColor }) => <Ionicons name='ios-bookmarks' size={24} color={tintColor}/>,
       title: 'Decks',
       headerStyle:{
-        backgroundColor: primary
+        backgroundColor: headerColor
       },
       headerTitleStyle:{
         color: white
@@ -31,7 +31,7 @@ const Tabs = TabNavigator({
       tabBarIcon: ({ tintColor }) => <Ionicons name='ios-bookmarks' size={24} color={tintColor}/>,
       title: 'Decks',
       headerStyle:{
-        backgroundColor: primary
+        backgroundColor: headerColor
       },
       headerTitleStyle:{
         color: white
@@ -63,7 +63,7 @@ const Tabs = TabNavigator({
       navigationOptions: {
         headerTintColor: white,
         headerStyle: {
-          backgroundColor: primary
+          backgroundColor: headerColor
         },
         headerTitleStyle:{
           color: white
@@ -75,7 +75,7 @@ const Tabs = TabNavigator({
       navigationOptions: {
         headerTintColor: white,
         headerStyle: {
-          backgroundColor: primary
+          backgroundColor: headerColor
         },
         headerTitleStyle:{
           color: white
@@ -87,7 +87,7 @@ const Tabs = TabNavigator({
       navigationOptions: {
         headerTintColor: white,
         headerStyle: {
-          backgroundColor: primary
+          backgroundColor: headerColor
         },
         headerTitleStyle:{
           color: white
@@ -99,7 +99,7 @@ const Tabs = TabNavigator({
       navigationOptions: {
         headerTintColor: white,
         headerStyle: {
-          backgroundColor: primary
+          backgroundColor: headerColor
         },
         headerTitleStyle:{
           color: white

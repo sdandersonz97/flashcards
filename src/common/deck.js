@@ -9,38 +9,21 @@ import { ActionSheet } from "native-base"
 
 export class Deck extends Component {
     render(){
-        const { deckTitle, questions, onClickNavigate } = this.props
+        const { deckTitle, questions, onClickNavigate, actionSheet } = this.props
         const { titleStyle, subtitleStyle } = fontStyles
         const BUTTONS = [
-            {
-                name:"New card",
-                action: ()=>onClickNavigate('AddPrivateCard')
-            }, 
-            {
-                name:"Start Quiz",
-                action: ()=>onClickNavigate('PrivateDeckQuiz')
-            }, 
-            {
-                name:"Share",
-                action: ()=>{}
-            }, 
-            {
-                name:"Delete",
-                action: ()=>{}
-            }, 
+            ...actionSheet,
             {
                 name:"Cancel",
                 action: ()=>{}
             }
         ]
-        const DESTRUCTIVE_INDEX = 3
         const CANCEL_INDEX = 4
         return(
             <TouchableOpacity onPress={()=>ActionSheet.show(
                 {
                 options: _.map(BUTTONS, button => button.name),
                 cancelButtonIndex: CANCEL_INDEX,
-                destructiveButtonIndex: DESTRUCTIVE_INDEX,
                 title: "Deck Action"
                 },
                 buttonIndex => BUTTONS[buttonIndex].action()

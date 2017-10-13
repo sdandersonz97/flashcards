@@ -6,6 +6,8 @@ import { fontStyles, containersStyles } from '../../styles'
 import { Deck, Spinner } from '../../common'
 import { fetchUserDecks } from '../actions'
 import { navigationHeaderRight } from '../../utils/helpers' 
+
+
 class privateDecksList extends Component {
     static navigationOptions = ({ navigation }) => {
         return navigationHeaderRight(navigation)
@@ -14,9 +16,25 @@ class privateDecksList extends Component {
         this.props.fetchUserDecks()
     }
     renderDeck = ({ item }) => {
-        const { key } = item
+        const { key, isDeckPublic } = item
         const { navigate } = this.props.navigation
-        return <Deck onClickNavigate={(screen) => navigate(screen,{ key })} { ...item } />
+        const buttons = [{
+            name:"New card",
+            action: ()=>navigate('AddPrivateCard')
+        }, 
+        {
+            name:"Start Quiz",
+            action: ()=>navigate('PrivateDeckQuiz')
+        },
+        {
+            name:"Delete",
+            action: ()=>{}
+        }]
+        !isDeckPublic && buttons.push({
+            name:"Share",
+            action: ()=>{}
+        }) 
+        return <Deck onClickNavigate={(screen) => navigate(screen,{ key })} actionSheet={buttons} { ...item } />
     }
     render(){
         const { decks } = this.props
