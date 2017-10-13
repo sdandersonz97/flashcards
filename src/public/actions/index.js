@@ -12,18 +12,19 @@ export const fetchUserDecks = () => {
     })
 }
 
-export const addUserDeck = (deckTitle, isDeckPublic) => {
+export const addUserDeck = (deckTitle, isDeckPublic, category) => {
     const key = userDecksRef(getCurrentUser().uid).push().key
     const uid = getCurrentUser().uid
     return () => {
         userDecksRef(uid).child(key).set({
             key,
             deckTitle,
-            isDeckPublic
+            isDeckPublic,
+            category
         })
         .then(() => {
             isDeckPublic
-            ? addPublicDeck(key, uid)
+            ? addPublicDeck(key, uid, category)
             : null
         })
     }
@@ -36,10 +37,11 @@ export const addUserCardToDeck = (deckId, { question, answer }) => {
     })
 }
 
-const addPublicDeck = (deckId, uid) => {
+const addPublicDeck = (deckId, uid, category) => {
     const key = publicDecksRef().push().key
     publicDecksRef().child(key).set({
         key,
+        category,
         deckId,
         uid,
         likes:0
