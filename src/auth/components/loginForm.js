@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { Card, CardSection, TextInput, Button,  } from '../../common'
 import { Text, StyleSheet } from 'react-native'
+import { NavigationActions } from 'react-navigation'
 import { loginUser } from '../actions'
 import { connect } from 'react-redux'
 import { AppLoading } from 'expo'
@@ -14,10 +15,16 @@ class LoginForm extends Component {
     onPasswordChange = password => this.setState({ password })
 
     onPublicSignIn = () => {
+        const resetAction = NavigationActions.reset({
+            index: 0,
+            actions: [
+              NavigationActions.navigate({ routeName: 'Private'})
+            ]
+        })
         const { loginUser, navigation } = this.props
         const { email, password } = this.state
         email && password
-        ? loginUser({ email, password }, () => navigation.navigate('Private'))
+        ? loginUser({ email, password }, () => navigation.dispatch(resetAction))
         : alert('Please provide a email and password')
     }
     onLocalSignIn = () => {
