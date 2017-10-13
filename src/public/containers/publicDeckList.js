@@ -18,6 +18,7 @@ class publicDecksList extends Component {
     render(){
         const { decks } = this.props
         const { titleStyle, subtitleStyle } = fontStyles
+        console.log(decks)
         return !decks 
         ? <Spinner/>
         : <FlatList
