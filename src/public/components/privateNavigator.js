@@ -7,6 +7,7 @@ import PrivateDeckList from '../containers/privateDeckList'
 import AddPrivateDeck from './addPrivateDeck'
 import AddPrivateCard from './addPrivateCard'
 import PrivateDeckShow from '../containers/privateDeckShow'
+import PrivateDeckQuiz from '../containers/privateDeckQuiz'
 const Tabs = TabNavigator({
     PrivateDeckList:{
       screen: PrivateDeckList,
@@ -70,6 +71,18 @@ const Tabs = TabNavigator({
     },
     AddPrivateCard: {
       screen: AddPrivateCard,
+      navigationOptions: {
+        headerTintColor: white,
+        headerStyle: {
+          backgroundColor: primary
+        },
+        headerTitleStyle:{
+          color: white
+        }
+      }
+    },
+    PrivateDeckQuiz: {
+      screen: PrivateDeckQuiz,
       navigationOptions: {
         headerTintColor: white,
         headerStyle: {
