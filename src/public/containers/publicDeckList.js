@@ -5,8 +5,11 @@ import { AppLoading } from 'expo'
 import { fontStyles, containersStyles } from '../../styles' 
 import { Deck, Spinner } from '../../common'
 import { fetchPublicDecks } from '../actions'
-
+import { navigationHeaderRight } from '../../utils/helpers'
 class PublicDecksList extends Component {
+    static navigationOptions = ({ navigation }) => {
+        return navigationHeaderRight(navigation)
+    }
     componentDidMount(){
         this.props.fetchPublicDecks()
     }

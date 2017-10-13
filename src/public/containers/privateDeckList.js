@@ -1,12 +1,15 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { View, FlatList, Text } from 'react-native'
+import { View, FlatList, Text, TouchableOpacity } from 'react-native'
 import { AppLoading } from 'expo'
 import { fontStyles, containersStyles } from '../../styles' 
 import { Deck, Spinner } from '../../common'
 import { fetchUserDecks } from '../actions'
-
+import { navigationHeaderRight } from '../../utils/helpers' 
 class privateDecksList extends Component {
+    static navigationOptions = ({ navigation }) => {
+        return navigationHeaderRight(navigation)
+    }
     componentDidMount(){
         this.props.fetchUserDecks()
     }

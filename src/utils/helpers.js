@@ -1,5 +1,9 @@
+import React from 'react'
+import { TouchableOpacity } from 'react-native'
 import { AsyncStorage } from 'react-native'
 import { Permissions, Notifications } from 'expo'
+import { white } from '../styles/colors' 
+import { Entypo } from '@expo/vector-icons'
 const NOTIFICATION_KEY = 'flashcard:key'
 
 export function clearLocalNotification () {
@@ -48,4 +52,12 @@ export function setLocalNotification () {
     }})
   }
 
-  
+export const navigationHeaderRight = (navigation) => {
+  return {
+    headerRight: (
+        <TouchableOpacity onPress={() => navigation.navigate('AddPrivateDeck')} style={{marginRight: 15}}>
+            <Entypo name='plus' size={30} color={white}/>
+        </TouchableOpacity>
+    )
+  }
+}

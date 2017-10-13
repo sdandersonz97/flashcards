@@ -38,7 +38,7 @@ class PrivateDeckQuiz extends Component {
         const { key } = navigation.state.params
         const { index, view, corrects, incorrects } = this.state
         const { titleStyle, subtitleStyle } = fontStyles
-        const questions = Object.keys(deck.questions).map(question => deck.questions[question])
+        const questions = deck.questions ? Object.keys(deck.questions).map(question => deck.questions[question]) : []
         const deckSize = _.size(deck.questions)
         return(
             <View>

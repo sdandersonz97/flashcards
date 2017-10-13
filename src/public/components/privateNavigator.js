@@ -93,6 +93,18 @@ const Tabs = TabNavigator({
           color: white
         }
       }
+    },
+    AddPrivateDeck: {
+      screen: AddPrivateDeck,
+      navigationOptions: {
+        headerTintColor: white,
+        headerStyle: {
+          backgroundColor: primary
+        },
+        headerTitleStyle:{
+          color: white
+        }
+      }
     }
     },{
     headerMode: 'none'
