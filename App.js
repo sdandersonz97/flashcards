@@ -6,7 +6,7 @@ import ReduxThunk from 'redux-thunk'
 import { Provider } from 'react-redux'
 import reducers from './src/reducers'
 import { Constants } from 'expo'
-import { primary } from './src/styles/colors'
+import { BlackTrans } from './src/styles/colors'
 import { setLocalNotification } from './src/utils/helpers'
 import { config } from './src/utils/firebaseConfig'
 import firebase from 'firebase'
@@ -31,7 +31,7 @@ export default class App extends React.Component {
     return (
       <Provider store={store}>
         <View style={{ flex:1 }}>
-          <CardsStatusBar backgroundColor={primary} barStyle='light-content'/>
+          <CardsStatusBar backgroundColor={BlackTrans} barStyle='light-content'/>
           <Root><MainNavigator/></Root>
         </View>
       </Provider>

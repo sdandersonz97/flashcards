@@ -9,11 +9,7 @@ const MainNavigator = StackNavigator({
     LoginForm: {
         screen: LoginForm,
         navigationOptions: {
-            headerTinkColor: white,
-            headerStyle: {
-              backgroundColor: primary
-            },
-            title:'Welcome'
+            header:null
         }
     },
     Local: {

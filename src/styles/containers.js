@@ -12,10 +12,22 @@ export const containersStyles = StyleSheet.create({
         flex: 1,
         justifyContent: 'center'
     },
-    containerRow: { 
+    rightButton: { 
         flexDirection: "row", 
         flex: 1, 
+        position: "absolute", 
+        bottom: 50, 
+        left: 0, 
+        right: 0, 
         justifyContent: 'flex-end', 
         padding: 15  
+    },
+    imageBackground:{
+            flex:1,
+            resizeMode: 'cover',
+            position: 'absolute',
+            width: '100%',
+            height: '100%',
+            justifyContent: 'center',
     }
 })

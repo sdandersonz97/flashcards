@@ -1,6 +1,9 @@
 import React, { Component } from 'react'
-import { Card, CardSection, TextInput, Button,  } from '../../common'
-import { Text, StyleSheet } from 'react-native'
+import { Button } from '../../common'
+import { StyleSheet, Image, View } from 'react-native'
+import { whiteTrans } from '../../styles/colors'
+import { containersStyles } from '../../styles'
+import { Form, Item, Input, Col, Row, Grid, Spinner, Text } from 'native-base';
 import { NavigationActions } from 'react-navigation'
 import { loginUser } from '../actions'
 import { connect } from 'react-redux'
@@ -33,38 +36,44 @@ class LoginForm extends Component {
     renderButton = () => {
         return !this.props.loading 
             ?   [
-                    <Button key="public" onPress={this.onPublicSignIn.bind(this)} text='Login'/>, 
-                    <Button key="local" onPress={this.onLocalSignIn.bind(this)} text='Local'/>
+                    <Button rounded block  key="public" onPress={this.onPublicSignIn.bind(this)}>Sign in</Button>,
+                    <Button rounded transparent key="local" onPress={this.onLocalSignIn.bind(this)}>Create an account</Button>
                 ]
-            :   <AppLoading/>
+                   
+            :   <Spinner/>
     }
     render() {
+        const { rightButton, imageBackground } = containersStyles
         return(
-            <Card>
-                <CardSection>
-                    <TextInput 
-                        label="Email" 
-                        placeholder="email@somenthing.com"
-                        onChangeText={this.onEmailChange}
-                        value={this.state.email}
-                    />
-                </CardSection>
-                <CardSection>
-                    <TextInput 
-                        label="Password" 
-                        secureTextEntry 
-                        placeholder="password"
-                        onChangeText={this.onPasswordChange}
-                        value={this.state.password}
-                    />
-                </CardSection>
-                <Text style={styles.errorStyled}>
-                    {this.props.error}
-                </Text>
-                <CardSection>
+            <Image 
+                source={require('../assets/form.jpg')} 
+                style={imageBackground}
+            >
+                <Form>
+                    <Item rounded style={{backgroundColor:whiteTrans, margin:10}}>
+                        <Input 
+                            placeholder='Email'
+                            onChangeText={this.onEmailChange}
+                            value={this.state.email}
+                        />
+                    </Item>
+                    <Item rounded style={{backgroundColor:whiteTrans, margin:10}}>
+                        <Input 
+                            placeholder='Password'
+                            secureTextEntry 
+                            onChangeText={this.onPasswordChange}
+                            value={this.state.password}
+                        />
+                    </Item>
+                    <Text style={styles.errorStyled}>
+                        {this.props.error}
+                    </Text>
                     {this.renderButton()}
-                </CardSection>
-            </Card>
+                </Form>
+                <View style={rightButton}>
+                    <Button bordered>Skip</Button>
+                </View>
+        </Image>
         )
     }
 }
