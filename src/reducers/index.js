@@ -6,6 +6,6 @@ import auth from './auth'
 export default combineReducers({
     privateDecks,
     localDecks,
-    publicDecks: () => [],
+    publicDecks,
     auth
 })
