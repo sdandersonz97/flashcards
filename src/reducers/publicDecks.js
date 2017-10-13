@@ -5,7 +5,10 @@ const INITIAL_STATE = {}
 export default (state=INITIAL_STATE, action) => {
     switch(action.type){
         case FETCH_PUBLIC_DECKS:
-            return action.decks
+            return {
+                ...state,
+                [action.deck.key]:action.deck
+            }
         default:
             return state
     }

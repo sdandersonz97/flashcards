@@ -6,7 +6,7 @@ import { fontStyles, containersStyles } from '../../styles'
 import { Deck, Spinner } from '../../common'
 import { fetchPublicDecks } from '../actions'
 
-class publicDecksList extends Component {
+class PublicDecksList extends Component {
     componentDidMount(){
         this.props.fetchPublicDecks()
     }
