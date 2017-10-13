@@ -10,6 +10,7 @@ import { primary } from './src/styles/colors'
 import { setLocalNotification } from './src/utils/helpers'
 import { config } from './src/utils/firebaseConfig'
 import firebase from 'firebase'
+import { Root } from 'native-base'
 function CardsStatusBar({ backgroundColor, ...props}){
   return(
     <View style={{ backgroundColor, height: Constants.statusBarHeight }}>
@@ -31,7 +32,7 @@ export default class App extends React.Component {
       <Provider store={store}>
         <View style={{ flex:1 }}>
           <CardsStatusBar backgroundColor={primary} barStyle='light-content'/>
-          <MainNavigator/>
+          <Root><MainNavigator/></Root>
         </View>
       </Provider>
     );

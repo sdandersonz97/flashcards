@@ -5,6 +5,7 @@ import { AppLoading } from 'expo'
 import { fontStyles, containersStyles } from '../../styles' 
 import { Deck, Spinner } from '../../common'
 import { fetchUserDecks } from '../actions'
+
 class privateDecksList extends Component {
     componentDidMount(){
         this.props.fetchUserDecks()
@@ -12,7 +13,7 @@ class privateDecksList extends Component {
     renderDeck = ({ item }) => {
         const { key } = item
         const { navigate } = this.props.navigation
-        return <Deck onClickNavigate={() => navigate('PrivateDeckShow',{ key })} { ...item } />
+        return <Deck onClickNavigate={(screen) => navigate(screen,{ key })} { ...item } />
     }
     render(){
         const { decks } = this.props

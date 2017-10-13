@@ -12,8 +12,8 @@ const Tabs = TabNavigator({
     PrivateDeckList:{
       screen: PrivateDeckList,
       navigationOptions: {
-        tabBarLabel: 'Decks',
-        tabBarIcon: ({ tintColor }) => <Ionicons name='ios-bookmarks' size={30} color={tintColor}/>,
+        tabBarLabel: 'My Decks',
+        tabBarIcon: ({ tintColor }) => <Ionicons name='ios-bookmarks' size={24} color={tintColor}/>,
         title: 'Decks',
         headerStyle:{
           backgroundColor: primary
@@ -27,7 +27,7 @@ const Tabs = TabNavigator({
       screen: AddPrivateDeck,
       navigationOptions: {
         tabBarLabel: 'Decks',
-        tabBarIcon: ({ tintColor }) => <Ionicons name='ios-bookmarks' size={30} color={tintColor}/>,
+        tabBarIcon: ({ tintColor }) => <Ionicons name='ios-bookmarks' size={24} color={tintColor}/>,
         title: 'Decks',
         headerStyle:{
           backgroundColor: primary
@@ -41,7 +41,7 @@ const Tabs = TabNavigator({
     tabBarOptions: {
       activeTintColor: Platform.OS === 'ios' ? primary : white,
       style:{
-        height:56,
+        height:40,
         backgroundColor: Platform.OS === 'ios' ? white : primary,
         shadowRadius: 6,
         shadowOpacity: 1,

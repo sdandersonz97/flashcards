@@ -6,6 +6,7 @@ const StyledButton = glamorous.touchableOpacity({
     alignSelf: 'center',
     justifyContent: 'center',
     borderRadius: 5,
+    margin: 15,
     width: 200,
     height: 50,
 })

@@ -11,5 +11,11 @@ export const containersStyles = StyleSheet.create({
         position: 'relative',
         flex: 1,
         justifyContent: 'center'
+    },
+    containerRow: { 
+        flexDirection: "row", 
+        flex: 1, 
+        justifyContent: 'flex-end', 
+        padding: 15  
     }
 })

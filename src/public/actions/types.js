@@ -1,3 +1,4 @@
 export const FETCH_USER_DECKS = 'FETCH_USER_DECK'
 export const ADD_USER_DECK = 'ADD_USER_DECK'  
 export const ADD_USER_CARD_TO_DECK = 'ADD_USER_CARD_TO_DECK'
+export const ADD_PUBLIC_DECK = 'ADD_PUBLIC_DECK'
