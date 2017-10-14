@@ -3,7 +3,7 @@ import { Button as NativeButton, Text } from 'native-base'
 import { styles } from './commonStyles'
 const { button } = styles
 export const Button = ({ text, children, ...rest }) => (
-    <NativeButton {...rest}>
+    <NativeButton style={{margin: 10}} {...rest}>
         <Text style={{textAlign:'center'}}> {children||text} </Text>
     </NativeButton> 
 )

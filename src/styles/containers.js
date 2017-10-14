@@ -6,12 +6,6 @@ export const containersStyles = StyleSheet.create({
         justifyContent: 'center', 
         alignItems: 'center'
     },
-    containerModal: {
-        backgroundColor: 'rgba(0, 0, 0, 0.75)',
-        position: 'relative',
-        flex: 1,
-        justifyContent: 'center'
-    },
     rightButton: { 
         flexDirection: "row", 
         flex: 1, 
@@ -23,11 +17,20 @@ export const containersStyles = StyleSheet.create({
         padding: 15  
     },
     imageBackground:{
-            flex:1,
-            resizeMode: 'cover',
-            position: 'absolute',
-            width: '100%',
-            height: '100%',
-            justifyContent: 'center',
+        flex:1,
+        resizeMode: 'cover',
+        position: 'absolute',
+        width: '100%',
+        height: '100%',
+        justifyContent: 'center',
+        
+    },
+    formContainer:{
+        margin:10, 
+        backgroundColor:'white',
+        shadowColor: '#000',
+        shadowOffset: { width: 0, height: 2 },
+        shadowOpacity: 0.1,
+        shadowRadius: 1,
     }
 })

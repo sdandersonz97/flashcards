@@ -1,6 +1,6 @@
 import React from 'react'
 import { StyleSheet } from 'react-native'
-import { transparent, white } from '../styles/colors'
+import { transparent, white, gray } from '../styles/colors'
 export const styles= StyleSheet.create({
     button: {
         width: 150,
@@ -37,5 +37,26 @@ export const styles= StyleSheet.create({
         fontSize: 18,
         fontWeight: 'bold',
         textAlign: 'center'
+    },
+    textArea: {
+        height:200,
+        width:'100%',
+        backgroundColor: white
+    },
+    containerModal: {
+        backgroundColor: 'rgba(0, 0, 0, 0.75)',
+        position: 'relative',
+        flex: 1,
+        justifyContent: 'center',
+    },
+    cardSectionBorderTop:{
+        borderTopLeftRadius: 8,
+        borderTopRightRadius: 8,
+    },
+    cardSectionBorderBottom:{
+        borderBottomLeftRadius: 8,
+        borderBottomRightRadius: 8,
+        flexDirection: 'row',
+        justifyContent: 'space-between'
     }
 })
