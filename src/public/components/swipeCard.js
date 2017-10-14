@@ -1,0 +1,65 @@
+import React from 'react'
+import { View, Dimensions} from 'react-native'
+import { Content, Card, CardItem, Right, Left, Body, Text, Button } from 'native-base'
+import { fontStyles, containersStyles } from '../../styles' 
+
+const SwipeCard = props => {
+    const { titleStyle, subtitleStyle } = fontStyles
+    const { question, answer, view, onPressChangeView, deckSize, index } = props
+    const dim = Dimensions.get('window')
+    return(
+        <Card style={{ flex:1, height: dim.height-100, justifyContent:'space-between'}}>
+            <CardItem cardHeader>
+                <Left>
+                <Body>
+                    <Text >
+                        {`${index+1}/${deckSize}`}
+                    </Text>
+                </Body>
+                </Left>
+            </CardItem> 
+            <CardItem cardBody>
+                <Left/>
+                <Body>
+                    <Text >
+                        { view === 'question' ? question : answer }
+                    </Text>
+                    
+                </Body>
+                <Right/>
+            </CardItem>
+            <CardItem>
+                    <Left/>
+                    {view === 'question' 
+                    ?   <Button 
+                            bordered
+                            onPress={onPressChangeView} 
+                        >
+                        <Text>View the answer</Text>
+                        </Button>
+                    :   <Button 
+                            bordered
+                            onPress={onPressChangeView} 
+                        >
+                        <Text>View the answer</Text>
+                        </Button>
+                    }
+                    <Right/>
+            </CardItem> 
+            <CardItem>
+                    <Left>
+                        <Text style={{fontSize:10}}>
+                            Swipe Left for incorrect
+                        </Text>
+                        
+                    </Left>
+                    <Right>
+                        <Text style={{fontSize:10}}>
+                            Swipe Right for correct
+                        </Text>
+                    </Right>
+            </CardItem>                     
+        </Card>
+    )
+}
+export default SwipeCard
