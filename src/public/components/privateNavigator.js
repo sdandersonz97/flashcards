@@ -9,12 +9,13 @@ import AddPrivateDeck from './addPrivateDeck'
 import AddPrivateCard from './addPrivateCard'
 import PrivateDeckShow from '../containers/privateDeckShow'
 import PrivateDeckQuiz from '../containers/privateDeckQuiz'
+import CategoryList from '../containers/categoryList'
 const Tabs = TabNavigator({
-  PublicDeckList:{
-    screen: PublicDeckList,
+  CategoryList:{
+    screen: CategoryList,
     navigationOptions: {
-      tabBarLabel: 'Decks',
-      tabBarIcon: ({ tintColor }) => <Ionicons name='ios-bookmarks' size={24} color={tintColor}/>,
+      tabBarLabel: 'Categories',
+      tabBarIcon: ({ tintColor }) => <FontAwesome name='th' size={24} color={tintColor}/>,
       title: 'Decks',
       headerStyle:{
         backgroundColor: headerColor
@@ -27,7 +28,7 @@ const Tabs = TabNavigator({
   PrivateDeckList:{
     screen: PrivateDeckList,
     navigationOptions: {
-      tabBarLabel: 'My Decks',
+      tabBarLabel: 'Decks',
       tabBarIcon: ({ tintColor }) => <Ionicons name='ios-bookmarks' size={24} color={tintColor}/>,
       title: 'Decks',
       headerStyle:{
@@ -38,6 +39,7 @@ const Tabs = TabNavigator({
       }
     }
   }
+  
   },{
   tabBarOptions: {
     activeTintColor: Platform.OS === 'ios' ? primary : white,

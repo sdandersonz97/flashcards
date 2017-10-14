@@ -23,7 +23,7 @@ export default class CategoryPicker extends Component {
             <Item label="Deep Learning" value="DeepLearning" />
             <Item label="Machine Learning" value="MachineLearning" />
             <Item label="Artificial Intelligence" value="AI" />
-            <Item label="Data Analist" value="DataAnalist" />
+            <Item label="Data Analyst" value="DataAnalyst" />
             <Item label="Full Stack Web Developer" value="FullStack" />
             <Item label="Front End Web Developer" value="FrontEnd" />
             <Item label="Robotics" value="Robotics" />
