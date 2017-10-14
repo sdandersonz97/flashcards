@@ -37,7 +37,8 @@ class PublicDecksList extends Component {
     }
 }
 
-const mapStateToProps = ({ publicDecks }) => {
-    return { decks: Object.keys(publicDecks).map(deck => publicDecks[deck]) }
+const mapStateToProps = ({ publicDecks }, { navigation }) => {
+    const { category } = navigation.state.params
+    return { decks: Object.keys(publicDecks).map(deck => publicDecks[deck]).filter(deck => deck.category === category) }
 }
 export default connect(mapStateToProps, { fetchPublicDecks })(PublicDecksList)
