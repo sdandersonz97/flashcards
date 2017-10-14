@@ -4,7 +4,7 @@ import { View, FlatList, Text, TouchableOpacity } from 'react-native'
 import { AppLoading } from 'expo'
 import { fontStyles, containersStyles } from '../../styles' 
 import { Deck, Spinner } from '../../common'
-import { fetchUserDecks } from '../actions'
+import { fetchUserDecks, sharePrivateDeck } from '../actions'
 import { navigationHeaderRight } from '../../utils/helpers' 
 
 
@@ -20,19 +20,19 @@ class privateDecksList extends Component {
         const { navigate } = this.props.navigation
         const buttons = [{
             name:"New card",
-            action: ()=>navigate('AddPrivateCard')
+            action: () => navigate('AddPrivateCard')
         }, 
         {
             name:"Start Quiz",
-            action: ()=>navigate('PrivateDeckQuiz')
+            action: () => navigate('PrivateDeckQuiz')
         },
         {
             name:"Delete",
-            action: ()=>{}
+            action: () => {}
         }]
         !isDeckPublic && buttons.push({
             name:"Share",
-            action: ()=>{}
+            action: () => this.props.sharePrivateDeck(item)
         }) 
         return <Deck onClickNavigate={(screen) => navigate(screen,{ key })} actionSheet={buttons} { ...item } />
     }
@@ -56,4 +56,4 @@ class privateDecksList extends Component {
 const mapStateToProps = ({ privateDecks }) => {
     return { decks: Object.keys(privateDecks).map(deck => privateDecks[deck]) }
 }
-export default connect(mapStateToProps, { fetchUserDecks })(privateDecksList)
+export default connect(mapStateToProps, { fetchUserDecks, sharePrivateDeck })(privateDecksList)
