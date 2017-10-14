@@ -2,13 +2,16 @@ import React, { Component } from 'react'
 import { Text, View } from 'react-native'
 import { connect } from 'react-redux'
 import { primary, white } from '../../styles/colors'
-import { fontStyles } from '../../styles/fonts' 
-import { Card, CardSection, Button, TextInput } from '../../common'
+import { fontStyles, containersStyles } from '../../styles' 
+import { Button, TextArea, ModalText } from '../../common'
+import { Input, Form, Item, Label } from 'native-base'
 import { addUserCardToDeck } from '../actions'
 class AddPrivateCard extends Component {
     state = {
         question: "",
         answer: "",
+        questionOpen: false,
+        answerOpen: false
     }
     onQuestionChange = (question) =>{
         this.setState(() => ({
@@ -19,6 +22,26 @@ class AddPrivateCard extends Component {
         this.setState(() => ({
             answer
         }))
+    }
+    cancelQuestionOpen = () =>{
+        this.setState({
+            questionOpen: false
+        })
+    }
+    openQuestion = () => {
+        this.setState({
+            questionOpen: true
+        })    
+    }
+    cancelAnswerOpen = () =>{
+        this.setState({
+            answerOpen: false
+        })
+    }
+    openAnswer = () => {
+        this.setState({
+            answerOpen: true
+        })    
     }
     onSubmit = () => {
         const { question, answer } = this.state
@@ -37,28 +60,58 @@ class AddPrivateCard extends Component {
         }
     }
     render(){
-        const { question, answer } = this.state
+        const { question, answer, questionOpen, answerOpen } = this.state
         const { titleStyle, subtitleStyle } = fontStyles
         return(
-            <Card style={{flex:1}}>
-                <Text style={titleStyle}> Question </Text>
-                <TextInput 
-                    value={question} 
-                    onChangeText={this.onQuestionChange} 
-                    placeholder="What's your name"
-                />    
-                <Text style={titleStyle}> Answer </Text>
-                <TextInput 
-                    value={answer} 
-                    onChangeText={this.onAnswerChange}
-                    placeholder="Steven"
-                />       
+            <Form style={containersStyles.formContainer}>
+                <Item inlineLabel onPress={() => this.openQuestion() }>
+                    <Label>Question</Label>
+                    <Input
+                        value={question} 
+                        onChangeText={this.onQuestionChange} 
+                        onFocus={()=>this.openQuestion()}
+                    />
+                </Item>
+                <Item onPress={() => this.openAnswer() }>
+                    <Label>Answer</Label>
+                    <Input
+                        value={answer} 
+                        onChangeText={this.onAnswerChange}
+                        onFocus={() => this.openAnswer()}
+                    />
+                </Item>
                 <Button 
-                    text="ADD CARD" 
                     onPress={this.onSubmit} 
                     style={{backgroundColor:primary, margin:30}}  
-                /> 
-            </Card>
+                >
+                    Save Card
+                </Button>
+                <ModalText
+                    visible={questionOpen}
+                    onCancel={this.cancelQuestionOpen}
+                >
+                    <TextArea
+                        onChangeText={this.onQuestionChange}
+                        value={question}
+                        placeholder="Write the question"
+                        multiline = {true}
+                        numberOfLines = {4}
+                    />
+                </ModalText>
+                <ModalText
+                    visible={answerOpen}
+                    onCancel={this.cancelAnswerOpen}
+                >
+                    <TextArea
+                        placeholder="Write the answer"
+                        onChangeText={this.onAnswerChange}
+                        value={answer}
+                        multiline = {true}
+                        numberOfLines = {4}
+                    />
+                </ModalText>
+                
+            </Form>
             
         )
     }
