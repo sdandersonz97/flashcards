@@ -2,11 +2,12 @@ import React, { Component } from 'react'
 import { Text, Switch, View } from 'react-native'
 import { connect } from 'react-redux'
 import { setLocalNotification, clearLocalNotification } from '../../utils/helpers'
-import { Card, CardSection, Button, TextInput } from '../../common'
 import CategoryPicker from './categoryPicker'
 import { primary } from '../../styles/colors'
 import { fontStyles, containersStyles } from '../../styles' 
 import { addUserDeck, addPublicDeck } from '../actions'
+import { Card, Input, Form, Item, Label, CardItem, Body, Left, Right, CheckBox } from 'native-base'
+import { Button } from '../../common'
 class AddPrivateDeck extends Component {
     state = {
         deckTitle: '',
@@ -44,27 +45,29 @@ class AddPrivateDeck extends Component {
     render(){
         const { deckTitle, isDeckPublic, category } = this.state
         const { titleStyle, subtitleStyle } = fontStyles
-        console.log(category)
-        return(   
-            <Card style={{flex:1}}>
-                <Text style={titleStyle}> Add a title for your deck! </Text> 
-                    <TextInput
+        return(
+            <Form  style={containersStyles.formContainer}>
+                <Item floatingLabel style={{margin:30}}>
+                    <Label>Title</Label>
+                    <Input
                         value={deckTitle}
                         onChangeText={this.handleTextChange}
-                        style={{ margin:40 }}
-                        placeholder="React"
-                    /> 
-                    
-                    <CategoryPicker value={category} onValueChange={this.handlePickerChange}/>
-                    
-                    <Text> Share </Text>
-                    <Switch value={isDeckPublic} onValueChange={this.handleToggleSwitch}/>
-                    <Button 
-                        onPress={this.submit} 
-                        text="ADD DECK" 
-                        style={{backgroundColor:primary}}
                     />
-            </Card>
+                </Item> 
+                <Item style={{borderBottomWidth:1, height:35,  margin:30}}>
+                    <Label> public </Label>
+                    <CheckBox value={isDeckPublic} onPress={this.handleToggleSwitch} checked={isDeckPublic}/>
+                </Item>
+                <Item style={{borderBottomWidth:1}}>
+                    <CategoryPicker  style={{margin:30}} value={category} onValueChange={this.handlePickerChange}/>
+                </Item>
+                <Button 
+                    style={{margin:30}}
+                    block
+                    onPress={this.submit}>
+                    Create deck 
+                </Button>
+            </Form>
         )
     }
 }
