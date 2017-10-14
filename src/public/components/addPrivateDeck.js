@@ -58,8 +58,8 @@ class AddPrivateDeck extends Component {
                     <Label> public </Label>
                     <CheckBox value={isDeckPublic} onPress={this.handleToggleSwitch} checked={isDeckPublic}/>
                 </Item>
-                <Item style={{borderBottomWidth:1}}>
-                    <CategoryPicker  style={{margin:30}} value={category} onValueChange={this.handlePickerChange}/>
+                <Item style={{borderBottomWidth:1, margin:30}}>
+                    <CategoryPicker value={category} onValueChange={this.handlePickerChange}/>
                 </Item>
                 <Button 
                     style={{margin:30}}

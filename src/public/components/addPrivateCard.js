@@ -64,7 +64,7 @@ class AddPrivateCard extends Component {
         const { titleStyle, subtitleStyle } = fontStyles
         return(
             <Form style={containersStyles.formContainer}>
-                <Item inlineLabel onPress={() => this.openQuestion() }>
+                <Item style={{borderBottomWidth:1, margin:30}} inlineLabel onPress={() => this.openQuestion() }>
                     <Label>Question</Label>
                     <Input
                         value={question} 
@@ -72,7 +72,7 @@ class AddPrivateCard extends Component {
                         onFocus={()=>this.openQuestion()}
                     />
                 </Item>
-                <Item onPress={() => this.openAnswer() }>
+                <Item style={{borderBottomWidth:1, margin:30}} onPress={() => this.openAnswer() }>
                     <Label>Answer</Label>
                     <Input
                         value={answer} 

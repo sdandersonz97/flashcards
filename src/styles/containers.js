@@ -16,6 +16,16 @@ export const containersStyles = StyleSheet.create({
         justifyContent: 'flex-end', 
         padding: 15  
     },
+    rowButtom: { 
+        flexDirection: "row", 
+        flex: 1, 
+        position: "absolute", 
+        bottom: 50, 
+        left: 0, 
+        right: 0, 
+        justifyContent: 'space-between', 
+        padding: 15  
+    },
     imageBackground:{
         flex:1,
         resizeMode: 'cover',
