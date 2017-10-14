@@ -20,7 +20,7 @@ class PublicDecksList extends Component {
         const { navigate } = this.props.navigation
         const buttons = [
         {
-            name:"Start Quiz",
+            name: "Start Quiz",
             action: () => navigate('PrivateDeckQuiz',{ key })
         }]
         return <Deck onClickNavigate={(screen) => navigate(screen,{ key })} actionSheet={buttons} { ...item } />

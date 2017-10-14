@@ -107,6 +107,18 @@ const Tabs = TabNavigator({
           color: white
         }
       }
+    },
+    PublicDeckList: {
+      screen: PublicDeckList,
+      navigationOptions: {
+        headerTintColor: white,
+        headerStyle: {
+          backgroundColor: headerColor
+        },
+        headerTitleStyle:{
+          color: white
+        }
+      }
     }
     },{
     headerMode: 'none'
