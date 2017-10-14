@@ -12,7 +12,8 @@ class PublicDecksList extends Component {
         return navigationHeaderRight(navigation)
     }
     componentDidMount(){
-        this.props.fetchPublicDecks()
+        const { category } = this.props.navigation.state.params
+        this.props.fetchPublicDecks(category)
     }
     renderDeck = ({ item }) => {
         const { key } = item
