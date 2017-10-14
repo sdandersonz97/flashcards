@@ -20,7 +20,8 @@ export const addUserDeck = (deckTitle, isDeckPublic, category) => {
             key,
             deckTitle,
             isDeckPublic,
-            category
+            category,
+            likes:0
         })
         .then(() => {
             isDeckPublic
@@ -43,8 +44,7 @@ const addPublicDeck = (deckId, uid, category) => {
         key,
         category,
         deckId,
-        uid,
-        likes:0
+        uid
     })
 }
 
