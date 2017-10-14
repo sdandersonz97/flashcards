@@ -20,7 +20,7 @@ class PublicDecksList extends Component {
         const buttons = [
         {
             name:"Start Quiz",
-            action: ()=>navigate('PrivateDeckQuiz')
+            action: () => navigate('PrivateDeckQuiz',{ key })
         }]
         return <Deck onClickNavigate={(screen) => navigate(screen,{ key })} actionSheet={buttons} { ...item } />
     }

@@ -3,10 +3,10 @@ import { connect } from 'react-redux'
 import { View, FlatList, Text, TouchableOpacity } from 'react-native'
 import { AppLoading } from 'expo'
 import { fontStyles, containersStyles } from '../../styles' 
-import { Deck, Spinner } from '../../common'
+import { Spinner } from 'native-base'
 import { fetchUserDecks, sharePrivateDeck } from '../actions'
 import { navigationHeaderRight } from '../../utils/helpers' 
-
+import Deck from '../components/deck'
 
 class privateDecksList extends Component {
     static navigationOptions = ({ navigation }) => {
@@ -20,11 +20,11 @@ class privateDecksList extends Component {
         const { navigate } = this.props.navigation
         const buttons = [{
             name:"New card",
-            action: () => navigate('AddPrivateCard')
+            action: () => navigate('AddPrivateCard',{ key })
         }, 
         {
             name:"Start Quiz",
-            action: () => navigate('PrivateDeckQuiz')
+            action: () => navigate('PrivateDeckQuiz', { key })
         },
         {
             name:"Delete",

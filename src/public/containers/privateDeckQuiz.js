@@ -55,7 +55,6 @@ class PrivateDeckQuiz extends Component {
                                     { view === 'question' ? question.question : question.answer }
                                 </Text>
                             </View>
-                            
                             {view === 'question' 
                             ?   <Button 
                                     onPress={this.onPressChangeView} 
