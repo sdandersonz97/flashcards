@@ -1,4 +1,4 @@
-import { LOGIN_USER_SUCCESS, LOGIN_USER_FAIL, LOGIN_USER } from '../auth/actions/types'
+import { LOGIN_USER_SUCCESS, LOGIN_USER_FAIL, LOGIN_USER, USER_SIGNUP_FAIL } from '../auth/actions/types'
 
 const INITIAL_STATE = { 
     loading: false,
@@ -26,6 +26,12 @@ export default (state=INITIAL_STATE, action) => {
                 password: '', 
                 loading: false 
             }
+        case USER_SIGNUP_FAIL:{
+            return {
+                ...state,
+                error: "Signup Failed"
+            }
+        }
         default:
             return state
     }

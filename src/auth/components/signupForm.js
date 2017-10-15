@@ -5,44 +5,46 @@ import { whiteTrans } from '../../styles/colors'
 import { containersStyles } from '../../styles'
 import { Form, Item, Input, Col, Row, Grid, Spinner, Text } from 'native-base';
 import { NavigationActions } from 'react-navigation'
-import { loginUser } from '../actions'
+import { signupUser } from '../actions'
 import { connect } from 'react-redux'
 import { AppLoading } from 'expo'
-class LoginForm extends Component {
+class SignupForm extends Component {
     state={
         email: '',
-        password: ''
+        password: '',
+        confirmPassword: '',
+        fullname: ''
     }
     onEmailChange = email => this.setState({ email })
-
     onPasswordChange = password => this.setState({ password })
+    onConfirmPasswordChange = confirmPassword => this.setState({ confirmPassword })
+    onFullnameChange = fullname => this.setState({ fullname })
 
-    onPublicSignIn = () => {
+    onPublicSignup = () => {
         const resetAction = NavigationActions.reset({
             index: 0,
             actions: [
               NavigationActions.navigate({ routeName: 'Private'})
             ]
         })
-        const { loginUser, navigation } = this.props
-        const { email, password } = this.state
-        email && password
-        ? loginUser({ email, password }, () => navigation.dispatch(resetAction))
-        : alert('Please provide a email and password')
+        const { email, password, confirmPassword, fullname } = this.state
+        if (password === confirmPassword){
+            this.props.signupUser({ fullname, email, password }, () => this.props.navigation.dispatch(resetAction))
+            this.setState({
+                email: '',
+                password: '',
+                confirmPassword: '',
+                fullname: ''
+            })
+        } else {
+            alert('Passwords don\'t match')
+            this.setState({
+                password: '',
+                confirmPassword: ''
+            })
+        }
     }
-    onLocalSignIn = () => {
-        this.props.navigation.navigate('SignupForm')
-    }
-    renderButton = () => {
-        return !this.props.loading 
-            ?   [
-                    <Button rounded block  key="public" onPress={this.onPublicSignIn.bind(this)}>Sign in</Button>,
-                    <Button rounded transparent key="local" onPress={this.onLocalSignIn.bind(this)}>Create an account</Button>
-                ]
-                   
-            :   <Spinner/>
-    }
-    render() {
+    render(){
         const { rightButton, imageBackground } = containersStyles
         return(
             <Image 
@@ -50,6 +52,13 @@ class LoginForm extends Component {
                 style={imageBackground}
             >
                 <Form>
+                    <Item rounded style={{backgroundColor:whiteTrans, margin:10}}>
+                        <Input 
+                            placeholder='Full name'
+                            onChangeText={this.onFullnameChange}
+                            value={this.state.fullname}
+                        />
+                    </Item>
                     <Item rounded style={{backgroundColor:whiteTrans, margin:10}}>
                         <Input 
                             placeholder='Email'
@@ -65,15 +74,20 @@ class LoginForm extends Component {
                             value={this.state.password}
                         />
                     </Item>
+                    <Item rounded style={{backgroundColor:whiteTrans, margin:10}}>
+                        <Input 
+                            placeholder='Confirm Password'
+                            secureTextEntry 
+                            onChangeText={this.onConfirmPasswordChange}
+                            value={this.state.confirmPassword}
+                        />
+                    </Item>
                     <Text style={styles.errorStyled}>
                         {this.props.error}
                     </Text>
-                    {this.renderButton()}
+                    <Button rounded block onPress={() => this.onPublicSignup()}>Sign up</Button>
                 </Form>
-                <View style={rightButton}>
-                    <Button bordered>Skip</Button>
-                </View>
-        </Image>
+            </Image>
         )
     }
 }
@@ -91,4 +105,4 @@ const mapStateToProps = ({ auth }) => {
         loading
     }
 }
-export default connect(mapStateToProps, { loginUser })(LoginForm)
+export default connect(mapStateToProps, { signupUser })(SignupForm)
