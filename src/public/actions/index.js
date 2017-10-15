@@ -1,6 +1,6 @@
 import firebase from 'firebase'
-import { userDecksRef, getCurrentUser, userDeckQuestionsRef, publicDecksRef } from '../../utils/firebaseHelpers'
-import { FETCH_USER_DECKS, ADD_USER_DECK, ADD_USER_CARD_TO_DECK, ADD_PUBLIC_DECK, FETCH_PUBLIC_DECKS, SHARE_PRIVATE_DECK } from './types'
+import { userDecksRef, getCurrentUser, userDeckQuestionsRef, publicDecksRef, likesDeckRef } from '../../utils/firebaseHelpers'
+import { FETCH_USER_DECKS, ADD_USER_DECK, ADD_USER_CARD_TO_DECK, ADD_PUBLIC_DECK, FETCH_PUBLIC_DECKS, SHARE_PRIVATE_DECK, LIKE_DECK } from './types'
 
 
 export const fetchUserDecks = () => {
@@ -21,7 +21,7 @@ export const addUserDeck = (deckTitle, isDeckPublic, category) => {
             deckTitle,
             isDeckPublic,
             category,
-            likes:0
+            uid
         })
         .then(() => {
             isDeckPublic
@@ -65,4 +65,9 @@ export const sharePrivateDeck = ({key, category}) => {
     const uid = getCurrentUser().uid
     return () => userDecksRef(uid).child(key).update({ isDeckPublic: true })
         .then(() => addPublicDeck(key, uid, category))
+}
+
+export const likeDeck = ({deckId, uid}) => {
+    const currentUserId = getCurrentUser().uid
+    return () => likesDeckRef(uid,deckId).child(currentUserId).set(true)
 }

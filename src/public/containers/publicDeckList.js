@@ -5,7 +5,7 @@ import { AppLoading } from 'expo'
 import { Spinner } from 'native-base'
 import { fontStyles, containersStyles } from '../../styles' 
 import  Deck  from '../components/deck'
-import { fetchPublicDecks } from '../actions'
+import { fetchPublicDecks, likeDeck } from '../actions'
 import { navigationHeaderRight } from '../../utils/helpers'
 class PublicDecksList extends Component {
     static navigationOptions = ({ navigation }) => {
@@ -23,7 +23,13 @@ class PublicDecksList extends Component {
             name: "Start Quiz",
             action: () => navigate('PrivateDeckQuiz',{ key })
         }]
-        return <Deck onClickNavigate={(screen) => navigate(screen,{ key })} actionSheet={buttons} { ...item } />
+        return <Deck 
+                onClickNavigate={(screen) => navigate(screen,{ key })} 
+                actionSheet={buttons} 
+                onPressLike={this.props.likeDeck}
+                deckId={key}
+                { ...item } 
+                />
     }
     render(){
         const { decks } = this.props
@@ -41,4 +47,4 @@ const mapStateToProps = ({ publicDecks }, { navigation }) => {
     const { category } = navigation.state.params
     return { decks: Object.keys(publicDecks).map(deck => publicDecks[deck]).filter(deck => deck.category === category) }
 }
-export default connect(mapStateToProps, { fetchPublicDecks })(PublicDecksList)
+export default connect(mapStateToProps, { fetchPublicDecks, likeDeck })(PublicDecksList)

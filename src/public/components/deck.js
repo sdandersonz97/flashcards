@@ -5,7 +5,7 @@ import { fontStyles } from '../../styles'
 import { gray } from '../../styles/colors'
 import { Container, Content, Card, CardItem, Thumbnail, Text, Button, Icon, Left, Body, Right, ActionSheet } from 'native-base';
 const Deck = (props) => {
-    const { deckTitle, questions, category, onClickNavigate, actionSheet, likes } = props
+    const { deckTitle, questions, category, onClickNavigate, actionSheet, likes, uid, onPressLike, deckId } = props
     const { titleStyle, SubtitleStyle} = fontStyles
     const BUTTONS = [
         ...actionSheet,
@@ -44,10 +44,20 @@ const Deck = (props) => {
             </CardItem>
             <CardItem >
               <Left>
-                <Button transparent>
-                  <Icon active name="thumbs-up" />
-                  <Text>{likes}</Text>
-                </Button>
+                { onPressLike
+                    ?(
+                        <Button transparent  onPress={() => onPressLike({ deckId, uid })}>
+                            <Icon active name="thumbs-up" />
+                            <Text>{likes ? _.size(likes) : 0}</Text>
+                        </Button>
+                    )
+                    :(
+                        <Button disabled transparent>
+                            <Icon active name="thumbs-up" />
+                            <Text>{likes ? _.size(likes) : 0}</Text>
+                        </Button>
+                    )
+                }
               </Left>
             </CardItem>
           </Card>
