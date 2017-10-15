@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Text, Switch, View } from 'react-native'
+import { Text, Switch, View, Image } from 'react-native'
 import { connect } from 'react-redux'
 import { setLocalNotification, clearLocalNotification } from '../../utils/helpers'
 import CategoryPicker from './categoryPicker'
@@ -46,7 +46,8 @@ class AddPrivateDeck extends Component {
         const { deckTitle, isDeckPublic, category } = this.state
         const { titleStyle, subtitleStyle } = fontStyles
         return(
-            <Form  style={containersStyles.formContainer}>
+            <Image style={containersStyles.imageBackground} source={require('../img/card3.jpg')}>
+            <Form style={containersStyles.formContainer}>
                 <Item floatingLabel style={{margin:30}}>
                     <Label>Title</Label>
                     <Input
@@ -68,6 +69,7 @@ class AddPrivateDeck extends Component {
                     Create deck 
                 </Button>
             </Form>
+            </Image>
         )
     }
 }

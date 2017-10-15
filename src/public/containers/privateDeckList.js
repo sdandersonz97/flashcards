@@ -1,9 +1,9 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { View, FlatList, Text, TouchableOpacity } from 'react-native'
+import { View, FlatList, Text, TouchableOpacity, Image } from 'react-native'
 import { AppLoading } from 'expo'
 import { fontStyles, containersStyles } from '../../styles' 
-import { Spinner } from 'native-base'
+import { Spinner, Card } from 'native-base'
 import { fetchUserDecks, sharePrivateDeck } from '../actions'
 import { navigationHeaderRight } from '../../utils/helpers' 
 import Deck from '../components/deck'
@@ -40,18 +40,23 @@ class privateDecksList extends Component {
         const { decks } = this.props
         const { titleStyle, subtitleStyle } = fontStyles
         return !decks 
-        ? <Spinner/>
-        : decks.length > 0
-            ?  <FlatList
-                    data={decks}
-                    renderItem={this.renderDeck}
-                />
-            :   <View style={containersStyles.containerView}>
-                    <Text style={titleStyle}> No decks available </Text>
-                    <Text style={subtitleStyle}> add some decks to get started! </Text>
-                </View>
+            ? <Spinner/>
+            : decks.length > 0
+                ?  <Image style={containersStyles.imageBackground} source={require('../img/card3.jpg')}> 
+                        <FlatList
+                            data={decks}
+                            renderItem={this.renderDeck}
+                        />
+                    </Image>
+                    
+                :   <Image style={containersStyles.imageBackground} source={require('../img/card3.jpg')}>
+                        <Card>
+                            <Text style={titleStyle}> No decks available </Text>
+                            <Text style={subtitleStyle}> add some decks to get started! </Text>
+                        </Card>
+                    </Image>
         }
-    }
+}
 
 const mapStateToProps = ({ privateDecks }) => {
     return { decks: Object.keys(privateDecks).map(deck => privateDecks[deck]) }

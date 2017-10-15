@@ -49,7 +49,7 @@ class PrivateDeckQuiz extends Component {
         const { index, view, corrects, incorrects } = this.state
         const { titleStyle, subtitleStyle } = fontStyles
         const deckSize = _.size(questions)
-        return deckSize > 0 
+        return  deckSize > 0 
                 ? <Image style={containersStyles.imageBackground} source={require('../img/card3.jpg')}>
                     <DeckSwiper
                     dataSource={questions}
@@ -70,33 +70,34 @@ class PrivateDeckQuiz extends Component {
                             onNavigate={this.onPressGoBack}
                             deckSize={deckSize}/>
                     }
-                
-                /></Image>
-                : <Image style={containersStyles.imageBackground} source={require('../img/card3.jpg')}> <Card>
-                    <CardItem header>
-                        <Text style={titleStyle}>You don't have cards in this deck, please add some cards first. </Text>   
-                    </CardItem>
-                    <CardItem>
-                        <Left/>
-                        <Body>
-                            <Button 
-                                onPress={()=>this.props.navigation.navigate('AddCard', { key })}    
-                            > 
-                                Add Card
-                            </Button> 
-                        </Body>
-                        <Right/>
-                    </CardItem>
-                </Card>
+                />
+                </Image>
+                : <Image style={containersStyles.imageBackground} source={require('../img/card3.jpg')}>
+                    <Card>
+                        <CardItem header>
+                            <Text style={titleStyle}>You don't have cards in this deck, please add some cards first. </Text>   
+                        </CardItem>
+                        <CardItem>
+                            <Left/>
+                            <Body>
+                                <Button 
+                                    onPress={()=>this.props.navigation.navigate('AddCard', { key })}    
+                                > 
+                                    Add Card
+                                </Button> 
+                            </Body>
+                            <Right/>
+                        </CardItem>
+                    </Card>
                 </Image>
     }
 }
-function mapStateToProps({ privateDecks }, { navigation }){
+function mapStateToProps({ publicDecks }, { navigation }){
     const { key } = navigation.state.params
     return{
-        deck: privateDecks[key],
-        questions: privateDecks[key].questions 
-            ? Object.keys(privateDecks[key].questions).map(question => privateDecks[key].questions[question])
+        deck: publicDecks[key],
+        questions: publicDecks[key].questions 
+            ? Object.keys(publicDecks[key].questions).map(question => publicDecks[key].questions[question])
             : [] 
     }
 }

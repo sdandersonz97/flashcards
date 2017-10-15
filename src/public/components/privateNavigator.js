@@ -5,6 +5,7 @@ import { Ionicons, FontAwesome } from '@expo/vector-icons'
 import { white, headerColor, primary } from '../../styles/colors'
 import PrivateDeckList from '../containers/privateDeckList'
 import PublicDeckList from '../containers/publicDeckList'
+import PublicDeckQuiz from '../containers/publicDeckQuiz'
 import AddPrivateDeck from './addPrivateDeck'
 import AddPrivateCard from './addPrivateCard'
 import PrivateDeckShow from '../containers/privateDeckShow'
@@ -110,6 +111,18 @@ const Tabs = TabNavigator({
     },
     PublicDeckList: {
       screen: PublicDeckList,
+      navigationOptions: {
+        headerTintColor: white,
+        headerStyle: {
+          backgroundColor: headerColor
+        },
+        headerTitleStyle:{
+          color: white
+        }
+      }
+    },
+    PublicDeckQuiz: {
+      screen: PublicDeckQuiz,
       navigationOptions: {
         headerTintColor: white,
         headerStyle: {

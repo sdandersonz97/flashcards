@@ -1,4 +1,5 @@
 import React from 'react'
+import { Image } from 'react-native'
 import { DeckSwiper, Card, CardItem, Right, Left, Body, Text } from 'native-base'
 import { Button } from '../../common'
 import { fontStyles, containersStyles } from '../../styles' 

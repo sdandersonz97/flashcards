@@ -1,5 +1,5 @@
 import React from 'react'
-import { View, Dimensions} from 'react-native'
+import { View, Dimensions, Image} from 'react-native'
 import { Content, Card, CardItem, Right, Left, Body, Text, Button } from 'native-base'
 import { fontStyles, containersStyles } from '../../styles' 
 
@@ -8,7 +8,7 @@ const SwipeCard = props => {
     const { question, answer, view, onPressChangeView, deckSize, index } = props
     const dim = Dimensions.get('window')
     return(
-        <Card style={{ flex:1, height: dim.height-100, justifyContent:'space-between'}}>
+        <Card style={{height:450, justifyContent:'space-between',  elevation: 3 }}>
             <CardItem cardHeader>
                 <Left>
                 <Body>
@@ -19,14 +19,12 @@ const SwipeCard = props => {
                 </Left>
             </CardItem> 
             <CardItem cardBody>
-                <Left/>
-                <Body>
+                <Body style={{margin:20}}>
                     <Text >
                         { view === 'question' ? question : answer }
                     </Text>
                     
                 </Body>
-                <Right/>
             </CardItem>
             <CardItem>
                     <Left/>

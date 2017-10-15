@@ -50,7 +50,9 @@ const addPublicDeck = (deckId, uid, category) => {
 
 export const fetchPublicDecks = (category) => {
     return dispatch => publicDecksRef().orderByChild('category').equalTo(category).limitToFirst(20).on('child_added', snap => {
+        console.log(snap.val().uid + 'public deck')
         userDecksRef(snap.val().uid).child(snap.val().deckId).on('value', snapUserDeck => {
+            console.log(snapUserDeck.val().deckTitle + 'private deck')
             dispatch({
                 type: FETCH_PUBLIC_DECKS,
                 deck: snapUserDeck.val()

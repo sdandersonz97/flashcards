@@ -61,6 +61,6 @@ const Deck = (props) => {
               </Left>
             </CardItem>
           </Card>
-    );
+    )
 }
 export default Deck

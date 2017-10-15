@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Text, View } from 'react-native'
+import { Text, View, Image } from 'react-native'
 import { connect } from 'react-redux'
 import { primary, white } from '../../styles/colors'
 import { fontStyles, containersStyles } from '../../styles' 
@@ -63,6 +63,7 @@ class AddPrivateCard extends Component {
         const { question, answer, questionOpen, answerOpen } = this.state
         const { titleStyle, subtitleStyle } = fontStyles
         return(
+            <Image style={containersStyles.imageBackground} source={require('../img/card3.jpg')}>
             <Form style={containersStyles.formContainer}>
                 <Item style={{borderBottomWidth:1, margin:30}} inlineLabel onPress={() => this.openQuestion() }>
                     <Label>Question</Label>
@@ -112,7 +113,7 @@ class AddPrivateCard extends Component {
                 </ModalText>
                 
             </Form>
-            
+            </Image>
         )
     }
 }

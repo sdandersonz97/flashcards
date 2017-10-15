@@ -49,7 +49,7 @@ class SignupForm extends Component {
         return(
             <Image 
                 source={require('../assets/form.jpg')} 
-                style={imageBackground}
+                style={[imageBackground, {justifyContent:'center'}]}
             >
                 <Form>
                     <Item rounded style={{backgroundColor:whiteTrans, margin:10}}>

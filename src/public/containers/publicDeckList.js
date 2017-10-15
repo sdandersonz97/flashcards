@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { View, FlatList, Text } from 'react-native'
+import { View, FlatList, Text, Image } from 'react-native'
 import { AppLoading } from 'expo'
 import { Spinner } from 'native-base'
 import { fontStyles, containersStyles } from '../../styles' 
@@ -21,7 +21,7 @@ class PublicDecksList extends Component {
         const buttons = [
         {
             name: "Start Quiz",
-            action: () => navigate('PrivateDeckQuiz',{ key })
+            action: () => navigate('PublicDeckQuiz',{ key })
         }]
         return <Deck 
                 onClickNavigate={(screen) => navigate(screen,{ key })} 
@@ -35,12 +35,14 @@ class PublicDecksList extends Component {
         const { decks } = this.props
         const { titleStyle, subtitleStyle } = fontStyles
         return !decks 
-        ? <Spinner/>
-        : <FlatList
-            data={decks}
-            renderItem={this.renderDeck}
-        />
-    }
+            ? <Spinner/>
+            : <Image style={containersStyles.imageBackground} source={require('../img/card3.jpg')}> 
+                <FlatList
+                    data={decks}
+                    renderItem={this.renderDeck}
+                /> 
+            </Image> 
+        }
 }
 
 const mapStateToProps = ({ publicDecks }, { navigation }) => {

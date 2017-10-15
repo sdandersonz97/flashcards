@@ -47,8 +47,10 @@ class LoginForm extends Component {
         return(
             <Image 
                 source={require('../assets/form.jpg')} 
-                style={imageBackground}
+                style={[imageBackground, {justifyContent:'center'}]}
             >
+                <Text style={styles.title}>Karte</Text>
+                <Text style={styles.subTitle}>Flashcard app</Text>
                 <Form>
                     <Item rounded style={{backgroundColor:whiteTrans, margin:10}}>
                         <Input 
@@ -70,9 +72,6 @@ class LoginForm extends Component {
                     </Text>
                     {this.renderButton()}
                 </Form>
-                <View style={rightButton}>
-                    <Button bordered>Skip</Button>
-                </View>
         </Image>
         )
     }
@@ -82,6 +81,20 @@ const styles = StyleSheet.create({
         fontSize: 20,
         alignSelf: 'center',
         color: 'red'
+    },
+    title:{
+        backgroundColor: 'transparent',
+        fontSize: 40,
+        fontWeight: 'bold',
+        textAlign: 'center',
+        color: 'white'
+    },
+    subTitle:{
+        backgroundColor: 'transparent',
+        fontSize: 25,
+        fontWeight: 'bold',
+        textAlign: 'center',
+        color: 'white'
     }
 })
 const mapStateToProps = ({ auth }) => {
