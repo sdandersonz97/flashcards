@@ -8,28 +8,24 @@ export const styles= StyleSheet.create({
         margin: 10,
     },
     cardImage:{
-        backgroundColor: "#fff",
-        borderRadius: 5,
-        borderColor: '#ddd',
-        shadowColor: '#000',
-        shadowOffset: { width: 0, height: 2 },
-        shadowOpacity: 0.1,
-        shadowRadius: 5,
-        marginLeft: 5,
-        marginRight: 5,
-        marginTop: 20,
-        marginBottom: 20,
-        resizeMode: 'cover',
-        width: '45%',
-        height: 100,
-        justifyContent: 'center',
-        alignItems: 'center'
+        width: '100%', 
+        height: 200, 
+        borderRadius: 5
     },
     imgButton:{
         width: '100%',
         height: '100%',
         alignItems:'center',
         justifyContent:'center'
+    },
+    imgCardContainer:{
+        flex:1, 
+        width: '90%', 
+        height: 200,
+        shadowColor: '#000',
+        shadowOffset: { width: 0, height: 3 },
+        shadowOpacity: 0.8,
+        shadowRadius: 15, marginTop: 20, marginBottom: 20, borderRadius: 5
     },
     fontImage:{
         backgroundColor: transparent,
