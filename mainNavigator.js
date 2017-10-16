@@ -1,5 +1,4 @@
 import React from 'react'
-import LocalNavigator from './src/local/components/localNavigator'
 import PrivateNavigator from './src/public/components/privateNavigator'
 import LoginForm from './src/auth/components/loginForm'
 import SignupForm from './src/auth/components/signupForm'
@@ -18,9 +17,6 @@ const MainNavigator = StackNavigator({
         navigationOptions: {
             header:null
         }
-    },
-    Local: {
-        screen: LocalNavigator
     },
     Private: {
         screen: PrivateNavigator
