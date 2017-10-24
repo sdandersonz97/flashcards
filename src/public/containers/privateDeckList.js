@@ -4,7 +4,7 @@ import { View, FlatList, Text, TouchableOpacity, Image } from 'react-native'
 import { AppLoading } from 'expo'
 import { fontStyles, containersStyles } from '../../styles' 
 import { Spinner, Card } from 'native-base'
-import { fetchUserDecks, sharePrivateDeck } from '../actions'
+import { fetchUserDecks, sharePrivateDeck, deleteDeck } from '../actions'
 import { navigationHeaderRight } from '../../utils/helpers' 
 import Deck from '../components/deck'
 
@@ -28,7 +28,7 @@ class privateDecksList extends Component {
         },
         {
             name:"Delete",
-            action: () => {}
+            action: () => this.props.deleteDeck({ deckId: key })
         }]
         !isDeckPublic && buttons.push({
             name:"Share",
@@ -56,4 +56,4 @@ class privateDecksList extends Component {
 const mapStateToProps = ({ privateDecks }) => {
     return { decks: Object.keys(privateDecks).map(deck => privateDecks[deck]) }
 }
-export default connect(mapStateToProps, { fetchUserDecks, sharePrivateDeck })(privateDecksList)
+export default connect(mapStateToProps, { fetchUserDecks, sharePrivateDeck, deleteDeck })(privateDecksList)

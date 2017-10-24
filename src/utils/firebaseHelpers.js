@@ -7,3 +7,4 @@ export const userDeckQuestionsRef = (uid, deckId) => userDecksRef(uid).child(`${
 export const getCurrentUser = () => firebase.auth().currentUser
 export const publicDecksRef = () => rootRef().child('publicDecks')
 export const likesDeckRef = (uid, deckId) => userDecksRef(uid).child(`${deckId}/likes`)
+export const publicDeckRef = deckId => publicDecksRef().child(deckId)

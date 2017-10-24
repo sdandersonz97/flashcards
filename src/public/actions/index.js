@@ -4,7 +4,8 @@ import {
     getCurrentUser, 
     userDeckQuestionsRef, 
     publicDecksRef, 
-    likesDeckRef 
+    likesDeckRef,
+    publicDeckRef 
 } from '../../utils/firebaseHelpers'
 import { 
     FETCH_USER_DECKS,
@@ -18,9 +19,7 @@ import {
 
 
 const addPublicDeck = (deckId, uid, category) => {
-    const key = publicDecksRef().push().key
-    publicDecksRef().child(key).set({
-        key,
+    publicDecksRef().child(deckId).set({
         category,
         deckId,
         uid
