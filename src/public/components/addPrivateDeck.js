@@ -46,7 +46,6 @@ class AddPrivateDeck extends Component {
         const { deckTitle, isDeckPublic, category } = this.state
         const { titleStyle, subtitleStyle } = fontStyles
         return(
-            <Image style={containersStyles.imageBackground} source={require('../img/card3.jpg')}>
             <Form style={containersStyles.formContainer}>
                 <Item floatingLabel style={{margin:30}}>
                     <Label>Title</Label>
@@ -69,7 +68,6 @@ class AddPrivateDeck extends Component {
                     Create deck 
                 </Button>
             </Form>
-            </Image>
         )
     }
 }

@@ -36,12 +36,10 @@ class PublicDecksList extends Component {
         const { titleStyle, subtitleStyle } = fontStyles
         return !decks 
             ? <Spinner/>
-            : <Image style={containersStyles.imageBackground} source={require('../img/card3.jpg')}> 
-                <FlatList
+            : <FlatList
                     data={decks}
                     renderItem={this.renderDeck}
-                /> 
-            </Image> 
+            /> 
         }
 }
 

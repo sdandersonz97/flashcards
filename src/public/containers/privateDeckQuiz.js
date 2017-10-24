@@ -50,7 +50,7 @@ class PrivateDeckQuiz extends Component {
         const { titleStyle, subtitleStyle } = fontStyles
         const deckSize = _.size(questions)
         return deckSize > 0 
-                ? <Image style={containersStyles.imageBackground} source={require('../img/card3.jpg')}>
+                ? 
                     <DeckSwiper
                     dataSource={questions}
                     onSwipeLeft={this.onSwipeLeft}
@@ -71,8 +71,8 @@ class PrivateDeckQuiz extends Component {
                             deckSize={deckSize}/>
                     }
                 
-                /></Image>
-                : <Image style={containersStyles.imageBackground} source={require('../img/card3.jpg')}> <Card>
+                />
+                :<Card>
                     <CardItem header>
                         <Text style={titleStyle}>You don't have cards in this deck, please add some cards first. </Text>   
                     </CardItem>
@@ -88,7 +88,6 @@ class PrivateDeckQuiz extends Component {
                         <Right/>
                     </CardItem>
                 </Card>
-                </Image>
     }
 }
 function mapStateToProps({ privateDecks }, { navigation }){

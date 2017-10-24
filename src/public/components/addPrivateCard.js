@@ -63,7 +63,6 @@ class AddPrivateCard extends Component {
         const { question, answer, questionOpen, answerOpen } = this.state
         const { titleStyle, subtitleStyle } = fontStyles
         return(
-            <Image style={containersStyles.imageBackground} source={require('../img/card3.jpg')}>
             <Form style={containersStyles.formContainer}>
                 <Item style={{borderBottomWidth:1, margin:30}} inlineLabel onPress={() => this.openQuestion() }>
                     <Label>Question</Label>
@@ -110,10 +109,8 @@ class AddPrivateCard extends Component {
                         multiline = {true}
                         numberOfLines = {4}
                     />
-                </ModalText>
-                
+                </ModalText>            
             </Form>
-            </Image>
         )
     }
 }

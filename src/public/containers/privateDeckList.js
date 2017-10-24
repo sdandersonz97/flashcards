@@ -42,19 +42,14 @@ class privateDecksList extends Component {
         return !decks 
             ? <Spinner/>
             : decks.length > 0
-                ?  <Image style={containersStyles.imageBackground} source={require('../img/card3.jpg')}> 
-                        <FlatList
-                            data={decks}
-                            renderItem={this.renderDeck}
-                        />
-                    </Image>
-                    
-                :   <Image style={containersStyles.imageBackground} source={require('../img/card3.jpg')}>
-                        <Card>
-                            <Text style={titleStyle}> No decks available </Text>
-                            <Text style={subtitleStyle}> add some decks to get started! </Text>
-                        </Card>
-                    </Image>
+                ?   <FlatList
+                        data={decks}
+                        renderItem={this.renderDeck}
+                    />          
+                :   <Card>
+                        <Text style={titleStyle}> No decks available </Text>
+                        <Text style={subtitleStyle}> add some decks to get started! </Text>
+                    </Card>
         }
 }
 
