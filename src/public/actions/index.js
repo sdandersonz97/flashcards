@@ -82,12 +82,10 @@ export const sharePrivateDeck = ({key, category}) => {
         .then(() => addPublicDeck(key, uid, category))
 }
 
-export const likeDeck = ({deckId, uid}) => {
-    const currentUserId = getCurrentUser().uid
-    return () => likesDeckRef(uid,deckId).child(currentUserId).set(true)
-}
+export const likeDeck = ({deckId, uid}) => () =>
+     likesDeckRef(uid,deckId).child(getCurrentUser().uid).set(true)
 
-export const deleteDeck = ({ deckId }) => {
+export const deleteDeck = ({ deckId }) => dispatch => {
     userDecksRef(getCurrentUser().uid).child(deckId).remove()
         .then(() => publicDecksRef().child(deckId).remove())
 }
