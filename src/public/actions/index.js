@@ -17,6 +17,16 @@ import {
 } from './types'
 
 
+const addPublicDeck = (deckId, uid, category) => {
+    const key = publicDecksRef().push().key
+    publicDecksRef().child(key).set({
+        key,
+        category,
+        deckId,
+        uid
+    })
+}
+
 export const fetchUserDecks = () => {
     return dispatch => userDecksRef(getCurrentUser().uid).on('value', snap => {
         dispatch({
@@ -53,16 +63,6 @@ export const addUserCardToDeck = (deckId, { question, answer }) => {
     })
 }
 
-const addPublicDeck = (deckId, uid, category) => {
-    const key = publicDecksRef().push().key
-    publicDecksRef().child(key).set({
-        key,
-        category,
-        deckId,
-        uid
-    })
-}
-
 export const fetchPublicDecks = (category) => {
     return dispatch => publicDecksRef().orderByChild('category').equalTo(category).limitToFirst(20).on('child_added', snap => {
         userDecksRef(snap.val().uid).child(snap.val().deckId).on('value', snapUserDeck => {
@@ -85,4 +85,9 @@ export const sharePrivateDeck = ({key, category}) => {
 export const likeDeck = ({deckId, uid}) => {
     const currentUserId = getCurrentUser().uid
     return () => likesDeckRef(uid,deckId).child(currentUserId).set(true)
+}
+
+export const deleteDeck = ({ deckId }) => {
+    userDecksRef(getCurrentUser().uid).child(deckId).remove()
+        .then(() => publicDecksRef().child(deckId).remove())
 }
