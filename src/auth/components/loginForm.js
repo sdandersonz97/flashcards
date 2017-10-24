@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
 import { Button } from '../../common'
-import { StyleSheet, Image, View } from 'react-native'
+import { StyleSheet, View } from 'react-native'
 import { whiteTrans } from '../../styles/colors'
-import { containersStyles } from '../../styles'
+import { containersStyles, inputStyles, fontStyles } from '../../styles'
 import { Form, Item, Input, Col, Row, Grid, Spinner, Text } from 'native-base';
 import { NavigationActions } from 'react-navigation'
 import { loginUser } from '../actions'
@@ -36,30 +36,29 @@ class LoginForm extends Component {
     renderButton = () => {
         return !this.props.loading 
             ?   [
-                    <Button rounded block  key="public" onPress={this.onPublicSignIn.bind(this)}>Sign in</Button>,
-                    <Button rounded transparent key="local" onPress={this.onLocalSignIn.bind(this)}>Create an account</Button>
+                    <Button rounded block key="public" onPress={this.onPublicSignIn.bind(this)}>Sign in</Button>,
+                    <Button rounded transparent  key="local" onPress={this.onLocalSignIn.bind(this)}>Create an account</Button>
                 ]
                    
             :   <Spinner/>
     }
     render() {
-        const { rightButton, imageBackground } = containersStyles
+        const { rightButton, authBackground } = containersStyles
         return(
-            <Image 
-                source={require('../assets/form.jpg')} 
-                style={[imageBackground, {justifyContent:'center'}]}
+            <View 
+                style={authBackground}
             >
-                <Text style={styles.title}>Karte</Text>
-                <Text style={styles.subTitle}>Flashcard app</Text>
+                <Text style={fontStyles.brandTitle}>Karte</Text>
+                <Text style={fontStyles.brandSubtitle}>Flashcard app</Text>
                 <Form>
-                    <Item rounded style={{backgroundColor:whiteTrans, margin:10}}>
+                    <Item rounded style={inputStyles.authInput}>
                         <Input 
                             placeholder='Email'
                             onChangeText={this.onEmailChange}
                             value={this.state.email}
                         />
                     </Item>
-                    <Item rounded style={{backgroundColor:whiteTrans, margin:10}}>
+                    <Item rounded style={inputStyles.authInput}>
                         <Input 
                             placeholder='Password'
                             secureTextEntry 
@@ -67,36 +66,16 @@ class LoginForm extends Component {
                             value={this.state.password}
                         />
                     </Item>
-                    <Text style={styles.errorStyled}>
+                    <Text style={fontStyles.errorStyled}>
                         {this.props.error}
                     </Text>
                     {this.renderButton()}
                 </Form>
-        </Image>
+        </View>
         )
     }
 }
-const styles = StyleSheet.create({
-    errorStyled:{
-        fontSize: 20,
-        alignSelf: 'center',
-        color: 'red'
-    },
-    title:{
-        backgroundColor: 'transparent',
-        fontSize: 40,
-        fontWeight: 'bold',
-        textAlign: 'center',
-        color: 'white'
-    },
-    subTitle:{
-        backgroundColor: 'transparent',
-        fontSize: 25,
-        fontWeight: 'bold',
-        textAlign: 'center',
-        color: 'white'
-    }
-})
+
 const mapStateToProps = ({ auth }) => {
     const { error, loading } = auth
     return {

@@ -26,11 +26,11 @@ export const containersStyles = StyleSheet.create({
         justifyContent: 'space-between', 
         padding: 15  
     },
-    imageBackground:{
-        resizeMode: 'cover',
-        position: 'absolute',
-        width: '100%',
-        height: '100%',
+    authBackground:{
+        flex:1,
+        backgroundColor: '#373F47',
+        alignItems:'center',
+        justifyContent: 'center'
     },
     formContainer:{
         margin:10, 
