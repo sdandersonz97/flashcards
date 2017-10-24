@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { Button } from '../../common'
 import { StyleSheet, Image, View } from 'react-native'
 import { whiteTrans } from '../../styles/colors'
-import { containersStyles } from '../../styles'
+import { containersStyles, inputStyles, fontStyles } from '../../styles'
 import { Form, Item, Input, Col, Row, Grid, Spinner, Text } from 'native-base';
 import { NavigationActions } from 'react-navigation'
 import { signupUser } from '../actions'
@@ -45,28 +45,26 @@ class SignupForm extends Component {
         }
     }
     render(){
-        const { rightButton, imageBackground } = containersStyles
+        const { rightButton, authBackground } = containersStyles
         return(
-            <Image 
-                source={require('../assets/form.jpg')} 
-                style={[imageBackground, {justifyContent:'center'}]}
-            >
+            <View style={authBackground}>   
+                <Text style={fontStyles.brandSubtitle}>Create an account</Text>
                 <Form>
-                    <Item rounded style={{backgroundColor:whiteTrans, margin:10}}>
+                    <Item rounded style={inputStyles.authInput}>
                         <Input 
                             placeholder='Full name'
                             onChangeText={this.onFullnameChange}
                             value={this.state.fullname}
                         />
                     </Item>
-                    <Item rounded style={{backgroundColor:whiteTrans, margin:10}}>
+                    <Item rounded style={inputStyles.authInput}>
                         <Input 
                             placeholder='Email'
                             onChangeText={this.onEmailChange}
                             value={this.state.email}
                         />
                     </Item>
-                    <Item rounded style={{backgroundColor:whiteTrans, margin:10}}>
+                    <Item rounded style={inputStyles.authInput}>
                         <Input 
                             placeholder='Password'
                             secureTextEntry 
@@ -74,7 +72,7 @@ class SignupForm extends Component {
                             value={this.state.password}
                         />
                     </Item>
-                    <Item rounded style={{backgroundColor:whiteTrans, margin:10}}>
+                    <Item rounded style={inputStyles.authInput}>
                         <Input 
                             placeholder='Confirm Password'
                             secureTextEntry 
@@ -82,22 +80,16 @@ class SignupForm extends Component {
                             value={this.state.confirmPassword}
                         />
                     </Item>
-                    <Text style={styles.errorStyled}>
+                    <Text style={fontStyles.errorStyled}>
                         {this.props.error}
                     </Text>
                     <Button rounded block onPress={() => this.onPublicSignup()}>Sign up</Button>
                 </Form>
-            </Image>
+            </View>
         )
     }
 }
-const styles = StyleSheet.create({
-    errorStyled:{
-        fontSize: 20,
-        alignSelf: 'center',
-        color: 'red'
-    }
-})
+
 const mapStateToProps = ({ auth }) => {
     const { error, loading } = auth
     return {
