@@ -1,6 +1,20 @@
 import firebase from 'firebase'
-import { userDecksRef, getCurrentUser, userDeckQuestionsRef, publicDecksRef, likesDeckRef } from '../../utils/firebaseHelpers'
-import { FETCH_USER_DECKS, ADD_USER_DECK, ADD_USER_CARD_TO_DECK, ADD_PUBLIC_DECK, FETCH_PUBLIC_DECKS, SHARE_PRIVATE_DECK, LIKE_DECK } from './types'
+import { 
+    userDecksRef, 
+    getCurrentUser, 
+    userDeckQuestionsRef, 
+    publicDecksRef, 
+    likesDeckRef 
+} from '../../utils/firebaseHelpers'
+import { 
+    FETCH_USER_DECKS,
+    ADD_USER_DECK, 
+    ADD_USER_CARD_TO_DECK, 
+    ADD_PUBLIC_DECK, 
+    FETCH_PUBLIC_DECKS,
+    SHARE_PRIVATE_DECK, 
+    LIKE_DECK 
+} from './types'
 
 
 export const fetchUserDecks = () => {
@@ -12,7 +26,7 @@ export const fetchUserDecks = () => {
     })
 }
 
-export const addUserDeck = (deckTitle, isDeckPublic, category) => {
+export const addUserDeck = (deckTitle, isDeckPublic, category, cb) => {
     const key = userDecksRef(getCurrentUser().uid).push().key
     const uid = getCurrentUser().uid
     return () => {
@@ -28,6 +42,7 @@ export const addUserDeck = (deckTitle, isDeckPublic, category) => {
             ? addPublicDeck(key, uid, category)
             : null
         })
+        .then(() => cb())
     }
 }
 
@@ -50,9 +65,7 @@ const addPublicDeck = (deckId, uid, category) => {
 
 export const fetchPublicDecks = (category) => {
     return dispatch => publicDecksRef().orderByChild('category').equalTo(category).limitToFirst(20).on('child_added', snap => {
-        console.log(snap.val().uid + 'public deck')
         userDecksRef(snap.val().uid).child(snap.val().deckId).on('value', snapUserDeck => {
-            console.log(snapUserDeck.val().deckTitle + 'private deck')
             dispatch({
                 type: FETCH_PUBLIC_DECKS,
                 deck: snapUserDeck.val()

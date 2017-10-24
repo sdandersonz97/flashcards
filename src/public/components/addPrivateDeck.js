@@ -24,10 +24,11 @@ class AddPrivateDeck extends Component {
             category
         })
     }
+    goHome = () => this.props.navigation.navigate('PrivateDeckList')
     submit = () => {
         const { deckTitle, isDeckPublic, category } = this.state
         if(deckTitle && category !== 'selectCategory'){
-            this.props.addUserDeck(deckTitle, isDeckPublic, category) 
+            this.props.addUserDeck(deckTitle, isDeckPublic, category, this.goHome) 
             this.setState({ deckTitle: '', category: 'selectCategory' })
         } else {
            deckTitle 
