@@ -24,11 +24,11 @@ class PublicDecksList extends Component {
             action: () => navigate('PublicDeckQuiz',{ key })
         }]
         return <Deck 
-                onClickNavigate={(screen) => navigate(screen,{ key })} 
-                actionSheet={buttons} 
-                onPressLike={this.props.likeDeck}
-                deckId={key}
-                { ...item } 
+                    onClickNavigate={(screen) => navigate(screen,{ key })} 
+                    actionSheet={buttons} 
+                    onPressLike={this.props.likeDeck}
+                    deckId={key}
+                    { ...item } 
                 />
     }
     render(){
@@ -45,6 +45,8 @@ class PublicDecksList extends Component {
 
 const mapStateToProps = ({ publicDecks }, { navigation }) => {
     const { category } = navigation.state.params
-    return { decks: Object.keys(publicDecks).map(deck => publicDecks[deck]).filter(deck => deck.category === category) }
+    return { decks: Object.keys(publicDecks).map(deck => publicDecks[deck])
+        .filter(deck => deck.category === category)
+        .sort((a,b) => _.size(b.likes) - _.size(a.likes))}
 }
 export default connect(mapStateToProps, { fetchPublicDecks, likeDeck })(PublicDecksList)
